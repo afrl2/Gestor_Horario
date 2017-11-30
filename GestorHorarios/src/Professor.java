@@ -21,7 +21,9 @@ public class Professor {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        if(!nome.isEmpty() && nome.length()>2){
+            this.nome = nome;
+        }
     }
 
     public int getIdade() {
@@ -29,7 +31,9 @@ public class Professor {
     }
 
     public void setIdade(int idade) {
-        this.idade = idade;
+        if(idade<120 && idade>0){
+            this.idade = idade;
+        }    
     }
 
     public Grau_Académico getGrau_Académico() {
