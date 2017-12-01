@@ -136,6 +136,6 @@ public class Aula implements Comparable<Aula>{
         }else{
             return 1;//A turma e diferente a outra
         }
-            
+       return 1;   
     }
 }
