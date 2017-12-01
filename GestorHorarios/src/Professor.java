@@ -11,9 +11,13 @@ public class Professor {
     private Grau_Académico grau_Académico;
 
     public Professor(String nome, int idade,Grau_Académico grau_Académico) {
-        this.nome = nome;
-        this.idade = idade;
-        this.grau_Académico = grau_Académico;
+        if(!nome.isEmpty() && nome.length()>2 && idade<120 && idade>0){
+            this.nome = nome;
+            this.idade = idade;
+            this.grau_Académico = grau_Académico;
+        }else{
+            throw new RuntimeException("Formatação Errada num dos campos!");
+        }
     }
 
     public String getNome() {
