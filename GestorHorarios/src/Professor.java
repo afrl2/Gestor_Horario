@@ -10,14 +10,23 @@ public class Professor {
     private int idade;
     private Grau_Académico grau_Académico;
     
-    public Professor(String nome, int idade,Grau_Académico grau_Académico) {
-        if(!nome.isEmpty() && nome.length()>2 && idade<120 && idade>0){
+    public Professor(String nome, int idade,Grau_Académico grau_Académico)
+                                               throws IllegalArgumentException {
+        if(!nome.isEmpty() && nome.length()>2){
             this.nome = nome;
-            this.idade = idade;
-            this.grau_Académico = grau_Académico;
         }else{
-            throw new RuntimeException("Formatação Errada num dos campos!");
+            throw new IllegalArgumentException("Formatação errada"
+                    + " no campo nome");
         }
+        if( (idade<120 && idade>0)){
+            this.idade = idade;
+        }else{
+            throw new IllegalArgumentException("Formatação errada"
+                    + " no campo idade");
+        }
+        
+        this.grau_Académico = grau_Académico;
+
     }
 
     public String getNome() {
