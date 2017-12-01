@@ -21,7 +21,7 @@ public class Turma implements Comparable<Turma> {
                     + " no campo Número");
         }
         
-        if(disciplina==null){
+        if(disciplina!=null){
             this.disciplina=disciplina;
         }else{
             throw new IllegalArgumentException("Formatação errada"
@@ -69,10 +69,6 @@ public class Turma implements Comparable<Turma> {
             return 1;//A turma e diferente a outra
         }
                  
-    }
-    
-    
-    
-    
+    }   
     
 }

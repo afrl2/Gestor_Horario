@@ -46,7 +46,7 @@ public class Salas implements Comparable<Salas> {
     public Salas(Departamentos departamento, int numero) 
                                                 throws IllegalArgumentException{
           
-        if(departamento==null){
+        if(departamento!=null){
              this.departamento=departamento;
         }else{
             throw new IllegalArgumentException("Formatação errada"
