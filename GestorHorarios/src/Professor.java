@@ -9,7 +9,7 @@ public class Professor {
     private String nome;
     private int idade;
     private Grau_Académico grau_Académico;
-
+    
     public Professor(String nome, int idade,Grau_Académico grau_Académico) {
         if(!nome.isEmpty() && nome.length()>2 && idade<120 && idade>0){
             this.nome = nome;
