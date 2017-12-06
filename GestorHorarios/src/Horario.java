@@ -206,6 +206,7 @@ public class Horario {
         aulas = new ArrayList<>();
         dados.getHorarios().add(this);
         
+        
     }
 
     public Curso getCurso() {

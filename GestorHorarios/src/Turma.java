@@ -33,8 +33,19 @@ public class Turma implements Comparable<Turma> {
         }
         
         this.tipoTurma=tipoTurma;
-        dados.getTurmas().add(this);      
         
+        int flag=0;
+        
+        for(int i=0;i<dados.getTurmas().size();i++){
+            if(dados.getTurmas().get(i).compareTo(this)==1){
+                flag=1;
+            }
+        }
+        
+        if(flag!=1){
+             dados.getTurmas().add(this);
+        }
+           
     }
     
     public Tipo_Turma getTipoTurma() {

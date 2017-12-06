@@ -62,7 +62,20 @@ public class Salas implements Comparable<Salas> {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Número");
         }
-        dados.getSalas().add(this);   
+        
+        int flag=0;
+        
+        for(int i=0;i<dados.getSalas().size();i++){
+            if(dados.getSalas().get(i).compareTo(this)==1){
+                flag=1;
+            }
+        }
+        
+        if(flag!=1){
+            dados.getSalas().add(this); 
+        }
+        
+          
     }
 
     public Departamentos getDepartamento() {

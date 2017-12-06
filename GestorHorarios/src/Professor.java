@@ -30,8 +30,19 @@ public class Professor {
         }
         
         this.grau_Académico = grau_Académico;
-        dados.getProfessores().add(this);
-
+       
+        int flag=0;
+        
+        for(int i=0;i<dados.getProfessores().size();i++){
+            if(dados.getProfessores().get(i).equals(this)){
+                flag=1;
+            }
+        }
+        
+        if(flag!=1){
+               dados.getProfessores().add(this);
+        } 
+  
     }
 
     public String getNome() {
