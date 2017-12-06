@@ -85,10 +85,10 @@ public class Salas implements Comparable<Salas> {
           if(o.getNumero()== this.getNumero()
                 && o.getDepartamento()== this.getDepartamento())
         {
-            return 0;//A turma e igual a outra
+            return 1;//A turma e igual a outra
 
         }else{
-            return 1;//A turma e diferente a outra
+            return 0;//A turma e diferente a outra
         }
         
     }

@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 enum Curso{
@@ -198,7 +199,8 @@ public class Horario {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Ano");
         }
-
+           
+        aulas = new ArrayList<>();
     }
 
     public Curso getCurso() {

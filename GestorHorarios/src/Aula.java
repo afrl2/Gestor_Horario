@@ -1,4 +1,4 @@
-class Hora{
+class Hora implements Comparable<Hora>{
     private int hora;
     private int minuto; 
 
@@ -32,6 +32,15 @@ class Hora{
 
     public void setMinuto(int minuto) {
         this.minuto = minuto;
+    }
+
+    @Override
+    public int compareTo(Hora o) {
+       if(o.getHora()==this.getHora() && o.getMinuto()==this.getMinuto())
+               {
+                   return 1;
+               }
+       return 0;
     }
     
 }
@@ -124,18 +133,44 @@ public class Aula implements Comparable<Aula>{
 
     @Override
     public int compareTo(Aula o) {
-  
-    if(true/*TODO CALCULAR INTERVALO e tiver dentro do horario*/){
+        
+ 
         if(o.getSala()==this.getSala()
                 && o.getTurma()== this.getTurma()
-                && o.getProfessor()== this.getProfessor())
+                && o.getProfessor()== this.getProfessor()
+                && o.getHora_inicial().compareTo(this.getHora_inicial())==1
+                && o.getHora_final().compareTo(this.getHora_final())==1)
         {
-            return 0;//A turma e igual a outra
-    }        
+            return 1;//A turma e igual a outra
+        }        
             
-        }else{
-            return 1;//A turma e diferente a outra
-        }
-       return 1;   
+    
+       return 0;   
     }
+    
+    
+    public int Verificar_hora(Aula o){
+    
+        int hora_i = this.getHora_inicial().getHora()
+                * 60 + this.getHora_inicial().getMinuto();
+        int hora_f = this.getHora_final().getHora()
+                * 60 + this.getHora_final().getMinuto();
+        int ohora_i = o.getHora_inicial().getHora()
+                * 60 + o.getHora_inicial().getMinuto();
+        int ohora_f = o.getHora_final().getHora()
+                * 60 + o.getHora_final().getMinuto();
+
+        if (hora_i >= ohora_i && hora_i <= ohora_f
+                && hora_f >= ohora_i && hora_f <= ohora_f) {
+
+            return 1;
+
+        }
+        
+        return 0;
+        
+    
+    }
+    
+
 }

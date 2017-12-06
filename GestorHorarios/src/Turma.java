@@ -62,11 +62,11 @@ public class Turma implements Comparable<Turma> {
                 && o.getNumero()== this.getNumero()
                 && o.getTipoTurma()== this.getTipoTurma() )
         {
-            return 0;//A turma e igual a outra
+            return 1;//A turma e igual a outra
             
             
         }else{
-            return 1;//A turma e diferente a outra
+            return 0;//A turma e diferente a outra
         }
                  
     }   
