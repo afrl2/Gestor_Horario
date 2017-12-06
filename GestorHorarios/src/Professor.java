@@ -9,9 +9,13 @@ public class Professor {
     private String nome;
     private int idade;
     private Grau_Académico grau_Académico;
+    private Dados dados;
     
-    public Professor(String nome, int idade,Grau_Académico grau_Académico)
-                                               throws IllegalArgumentException {
+    public Professor(Dados dados, String nome, int idade,
+            Grau_Académico grau_Académico)throws IllegalArgumentException {
+       
+        this.dados=dados;
+        
         if(!nome.isEmpty() && nome.length()>2){
             this.nome = nome;
         }else{
@@ -26,6 +30,7 @@ public class Professor {
         }
         
         this.grau_Académico = grau_Académico;
+        dados.getProfessores().add(this);
 
     }
 
@@ -57,7 +62,18 @@ public class Professor {
         this.grau_Académico = grau_Académico;
     }
 
-    
+    public void remove_professor(){
+        
+        if(dados.getProfessores().remove(this)){
+            
+            for(int i=0;i<dados.getProfessores().size();i++){
+                
+                if(dados.getAulas().get(i).getProfessor().equals(this)){
+                    dados.getAulas().remove(i);
+                }            
+            }            
+        }
+    }
     
     
 }

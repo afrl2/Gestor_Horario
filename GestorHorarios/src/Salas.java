@@ -42,10 +42,13 @@ public class Salas implements Comparable<Salas> {
     
     private Departamentos departamento;
     private int numero;
-    
-    public Salas(Departamentos departamento, int numero) 
-                                                throws IllegalArgumentException{
-          
+    private Dados dados;
+     
+    public Salas(Dados dados,Departamentos departamento, int numero)
+            throws IllegalArgumentException{
+       
+        this.dados=dados;
+        
         if(departamento!=null){
              this.departamento=departamento;
         }else{
@@ -59,7 +62,7 @@ public class Salas implements Comparable<Salas> {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Número");
         }
-           
+        dados.getSalas().add(this);   
     }
 
     public Departamentos getDepartamento() {
@@ -91,6 +94,19 @@ public class Salas implements Comparable<Salas> {
             return 0;//A turma e diferente a outra
         }
         
+    }
+    
+    public void remove_salas(){
+        
+        if(dados.getSalas().remove(this)){
+            
+            for(int i=0;i<dados.getAulas().size();i++){
+                
+                if(dados.getAulas().get(i).getSala().compareTo(this)==1){
+                    dados.getAulas().remove(i);
+                }            
+            }            
+        }
     }
     
 }

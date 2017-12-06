@@ -52,9 +52,12 @@ public class Aula implements Comparable<Aula>{
     private Professor professor;
     private Salas sala;
     private Turma turma;
-
-    public Aula(int hi,int mi,int hf,int mf,Professor professor,
+    private Dados dados;
+    
+    public Aula(Dados dados,int hi,int mi,int hf,int mf,Professor professor,
                        Salas sala, Turma turma) throws IllegalArgumentException{
+       
+        this.dados=dados;
         
         try{
             hora_inicial = new Hora(hi,mi);
@@ -88,7 +91,8 @@ public class Aula implements Comparable<Aula>{
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Turma");
         }                
-  
+        
+        dados.getAulas().add(this);
     }
    
         public Hora getHora_inicial() {
@@ -169,8 +173,12 @@ public class Aula implements Comparable<Aula>{
         
         return 0;
         
-    
     }
     
+    public Boolean remove_aula(){
+        
+       return dados.getAulas().remove(this);
+        
+    }
 
 }

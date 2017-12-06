@@ -10,10 +10,14 @@ public class Turma implements Comparable<Turma> {
     private int numero;
     private String disciplina;
     private Tipo_Turma tipoTurma;
+    private Dados dados;
 
-    public Turma(int numero,String disciplina, Tipo_Turma tipoTurma)
+    public Turma(Dados dados ,int numero ,String disciplina ,Tipo_Turma tipoTurma)
                                                 throws IllegalArgumentException
     {
+        
+        this.dados=dados;
+        
         if(numero>0){
             this.numero=numero;
         }else{
@@ -29,6 +33,8 @@ public class Turma implements Comparable<Turma> {
         }
         
         this.tipoTurma=tipoTurma;
+        dados.getTurmas().add(this);      
+        
     }
     
     public Tipo_Turma getTipoTurma() {
@@ -71,4 +77,18 @@ public class Turma implements Comparable<Turma> {
                  
     }   
     
+      
+    public void remove_salas(){
+        
+        if(dados.getTurmas().remove(this)){
+            
+            for(int i=0;i<dados.getAulas().size();i++){
+                
+                if(dados.getAulas().get(i).getTurma().compareTo(this)==1){
+                    dados.getAulas().remove(i);
+                }            
+            }            
+        }
+    }  
+
 }

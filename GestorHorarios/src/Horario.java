@@ -176,9 +176,12 @@ public class Horario {
     private Curso curso;
     private Semestre semestre;
     private Ano ano;
+    private Dados dados;
 
-    public Horario(Curso curso, Semestre semestre, Ano ano) throws IllegalArgumentException {
-
+    public Horario(Dados dados ,Curso curso ,Semestre semestre ,Ano ano) throws IllegalArgumentException {
+ 
+        this.dados=dados;
+        
         if (curso != null) {
             this.curso = curso;
         } else {
@@ -201,6 +204,8 @@ public class Horario {
         }
            
         aulas = new ArrayList<>();
+        dados.getHorarios().add(this);
+        
     }
 
     public Curso getCurso() {
@@ -226,5 +231,35 @@ public class Horario {
     public void setAno(Ano ano) {
         this.ano = ano;
     }
-
+    
+    public boolean adicionar_aula(Aula aula){
+      
+        int flag_comp=0;
+        
+        for(int i=0;i<aulas.size();i++){
+            if(aula.compareTo(aulas.get(i))==1
+                    ||aula.Verificar_hora(aulas.get(i))==1)
+            flag_comp=1;
+        }
+        
+        if(flag_comp==0){
+            aulas.add(aula);
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+    
+    public Boolean remove_aula(Aula aula){
+        
+        return aulas.remove(aula);
+        
+    }
+        
+    public Boolean Apagar_horario(){
+        
+        return dados.getHorarios().remove(this);
+        
+    }
 }
