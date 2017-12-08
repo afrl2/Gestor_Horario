@@ -111,49 +111,16 @@ public class HorarioTest {
 //    /**
 //     * Test of setAno method, of class Horario.
 //     */
-//    @Test
-//    public void testSetAno() {
-//        System.out.println("setAno");
-//        Ano ano = null;
-//        Horario instance = null;
-//        instance.setAno(ano);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of adicionar_aula method, of class Horario.
-//     */
-//    @Test
-//    public void testAdicionar_aula() {
-//        System.out.println("adicionar_aula");
-//        Aula aula = null;
-//        Horario instance = null;
-//        boolean expResult = false;
-//        boolean result = instance.adicionar_aula(aula);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of remove_aula method, of class Horario.
-//     */
-//    @Test
-//    public void testRemove_aula() {
-//        System.out.println("remove_aula");
-//        Aula aula = null;
-//        Horario instance = null;
-//        Boolean expResult = null;
-//        Boolean result = instance.remove_aula(aula);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of Apagar_horario method, of class Horario.
-//     */
+@Test
+    public void testSetAno() {
+        System.out.println("setAno");
+        Ano ano = Ano.ano3;
+        Dados dados = new Dados();
+        Horario instance = new Horario(dados, Curso.Lic_EngGI, Semestre.sem2, Ano.ano1);
+        instance.setAno(ano);
+        System.out.println(instance.getAno());
+    }
+
     @Test
     public void testApagar_horario() {
         System.out.println("Apagar_horario");
