@@ -53,7 +53,8 @@ public class ProfessorTest {
     public void testGetNome() {
         System.out.println("getNome");
         String nome = "Lara";
-        Professor instance = new Professor(nome, 23, Grau_Académico.Douturamento);
+        Dados dados = new Dados();
+        Professor instance = new Professor(dados,nome, 23, Grau_Académico.Douturamento);
         System.out.println(instance.getNome());    
     }
 
@@ -64,7 +65,8 @@ public class ProfessorTest {
     public void testSetNome() {
          System.out.println("setNome");
         String nome = "Joaquim";
-        Professor instance = new Professor("Lara", 23, Grau_Académico.Douturamento);
+        Dados dados = new Dados();
+        Professor instance = new Professor(dados,"Lara", 23, Grau_Académico.Douturamento);
         instance.setNome(nome);
         System.out.println(instance.getNome());  
     }
@@ -76,7 +78,8 @@ public class ProfessorTest {
     public void testGetIdade() {
         System.out.println("getIdade");
         int numero = 13;
-        Professor instance = new Professor("Lara", numero, Grau_Académico.Douturamento);
+        Dados dados = new Dados();
+        Professor instance = new Professor(dados,"Lara", numero, Grau_Académico.Douturamento);
         System.out.println(instance.getIdade());  
     }
 
@@ -87,7 +90,8 @@ public class ProfessorTest {
     public void testSetIdade() {
         System.out.println("setIdade");
         int idade = 13;
-        Professor instance = new Professor("Lara", 24, Grau_Académico.Douturamento);
+        Dados dados = new Dados();
+        Professor instance = new Professor(dados,"Lara", 24, Grau_Académico.Douturamento);
         instance.setIdade(idade);
         System.out.println(instance.getIdade()); 
     }
@@ -99,7 +103,8 @@ public class ProfessorTest {
     public void testGetGrau_Académico() {
         System.out.println("getGrau_Academico");
         Grau_Académico douturamento=Grau_Académico.Licenciamento;
-        Professor instance = new Professor("Lara", 24, douturamento);
+        Dados dados = new Dados();
+        Professor instance = new Professor(dados,"Lara", 24, douturamento);
         System.out.println(instance.getGrau_Académico()); 
     }
 
@@ -110,7 +115,8 @@ public class ProfessorTest {
     public void testSetGrau_Académico() {
         System.out.println("setGrau_Academico");
         Grau_Académico grau_Académico = Grau_Académico.Licenciamento;
-        Professor instance = new Professor("Lara", 24, Grau_Académico.Douturamento);
+        Dados dados = new Dados();
+        Professor instance = new Professor(dados,"Lara", 24, Grau_Académico.Douturamento);
         instance.setGrau_Académico(grau_Académico);  
         System.out.println(instance.getGrau_Académico()); 
     }
