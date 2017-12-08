@@ -100,6 +100,18 @@ public class Turma implements Comparable<Turma> {
                 }            
             }            
         }
-    }  
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Turma))
+            return false;
+        
+        if(((Turma)obj).getDisciplina()==this.getDisciplina() && ((Turma)obj).getNumero()==this.getNumero() &&
+                ((Turma)obj).getTipoTurma()==this.getTipoTurma())
+            return true;
+        return false;
+            
+    }
 
 }

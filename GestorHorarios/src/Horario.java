@@ -232,6 +232,14 @@ public class Horario {
     public void setAno(Ano ano) {
         this.ano = ano;
     }
+
+    public List<Aula> getAulas() {
+        return aulas;
+    }
+    
+    public void setAulas(List<Aula> aulas) {
+        this.aulas = aulas;
+    }
     
     public boolean adicionar_aula(Aula aula){
       

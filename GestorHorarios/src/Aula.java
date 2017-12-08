@@ -20,7 +20,7 @@ class Hora implements Comparable<Hora>{
           throw new IllegalArgumentException("Hora inserida inválida");
       }
       
-      if(minuto>=0 && minuto<61){
+      if(minuto>=0 && minuto<60){
           this.minuto = minuto;
       }else{
           throw new IllegalArgumentException("Minuto inserido inválida");
@@ -124,6 +124,7 @@ public class Aula implements Comparable<Aula>{
     }
 
     public void setHora_inicial(Hora hora_inicial) {
+        if(hora_inicial.getHora()<25 && hora_inicial.getHora()>0 && hora_inicial.getMinuto()<=59 && hora_inicial.getMinuto()>=0 && hora_inicial.getHora()*60+hora_inicial.getMinuto()<this.hora_final.getHora()*60+hora_final.getMinuto())
         this.hora_inicial = hora_inicial;
     }
 
@@ -132,7 +133,8 @@ public class Aula implements Comparable<Aula>{
     }
 
     public void setHora_final(Hora hora_final) {
-        this.hora_final = hora_final;
+        if(hora_final.getHora()<25 && hora_final.getHora()>0 && hora_final.getMinuto()<=59 && hora_final.getMinuto()>=0 && this.getHora_inicial().getHora()*60+this.getHora_inicial().getMinuto()<hora_final.getHora()*60+hora_inicial.getMinuto())
+            this.hora_final = hora_final;
     }
 
     public Professor getProfessor() {

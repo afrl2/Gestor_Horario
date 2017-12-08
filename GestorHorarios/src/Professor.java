@@ -85,6 +85,21 @@ public class Professor {
             }            
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Professor))
+            return false;
+        
+        if(((Professor)obj).getNome()==this.getNome() 
+                && ((Professor)obj).getIdade()==this.getIdade()
+                        && ((Professor)obj).getGrau_Académico()==this.getGrau_Académico())
+            return true;
+        
+        return false;
+    }
+    
+    
     
     
 }

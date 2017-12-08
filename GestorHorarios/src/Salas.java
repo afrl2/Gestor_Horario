@@ -121,5 +121,18 @@ public class Salas implements Comparable<Salas> {
             }            
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Salas))
+            return false;
+        
+        if(((Salas)obj).getDepartamento()==this.getDepartamento() && ((Salas)obj).getNumero()==this.getNumero())
+            return true;
+        return false;
+            
+    }
+    
+    
     
 }
