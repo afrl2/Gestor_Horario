@@ -72,9 +72,10 @@ public class Dados {
             }
         }
         
-        resultado=(aux+" - Curso:" +horario.getCurso().toString()
+        resultado=(" - Curso:" +horario.getCurso().toString()
                       +" Ano:"+horario.getAno()
-                      +" Semestre:"+horario.getSemestre());
+                      +" Semestre:"+horario.getSemestre()
+                      + aux);
                 
         return resultado;
     }
