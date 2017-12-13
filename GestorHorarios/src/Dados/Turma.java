@@ -1,6 +1,9 @@
 package Dados;
 
 
+import Dados.Dados;
+
+
 enum TipoTurma{
     Prática,
     Teórica,

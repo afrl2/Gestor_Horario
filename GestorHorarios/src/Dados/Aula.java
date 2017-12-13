@@ -1,5 +1,8 @@
 package Dados;
 
+
+import Dados.Dados;
+
 enum DiaSemana{
     segunda,
     terca,
