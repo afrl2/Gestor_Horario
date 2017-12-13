@@ -1,3 +1,13 @@
+enum DiaSemana{
+    segunda,
+    terca,
+    quarta,
+    quinta,
+    sexta,
+    sabado,
+    domingo    
+}
+
 class Hora implements Comparable<Hora>{
     private int hora;
     private int minuto; 
@@ -10,7 +20,7 @@ class Hora implements Comparable<Hora>{
           throw new IllegalArgumentException("Hora inserida inválida");
       }
       
-      if(minuto>=0 && minuto<61){
+      if(minuto>=0 && minuto<60){
           this.minuto = minuto;
       }else{
           throw new IllegalArgumentException("Minuto inserido inválida");
@@ -36,13 +46,11 @@ class Hora implements Comparable<Hora>{
 
     @Override
     public int compareTo(Hora o) {
-       if(o.getHora()==this.getHora() && o.getMinuto()==this.getMinuto())
-               {
-                   return 1;
-               }
-       return 0;
+        if (o.getHora() == this.getHora() && o.getMinuto() == this.getMinuto()) {
+            return 1;
+        }
+        return 0;
     }
-    
 }
 
 public class Aula implements Comparable<Aula>{
@@ -52,9 +60,14 @@ public class Aula implements Comparable<Aula>{
     private Professor professor;
     private Salas sala;
     private Turma turma;
-
-    public Aula(int hi,int mi,int hf,int mf,Professor professor,
-                       Salas sala, Turma turma) throws IllegalArgumentException{
+    private Dados dados;
+    private DiaSemana dia;
+    
+    public Aula(Dados dados,int hi,int mi,int hf,int mf,Professor professor,
+                        Salas sala, Turma turma,DiaSemana semana) 
+                        throws IllegalArgumentException{
+       
+        this.dados=dados;
         
         try{
             hora_inicial = new Hora(hi,mi);
@@ -68,14 +81,14 @@ public class Aula implements Comparable<Aula>{
             throw e;
         }
         
-        if(professor !=null){
+        if (professor != null){
              this.professor = professor;
         }else{
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Professor");
         }
        
-        if(sala !=null){
+        if (sala != null){
               this.sala = sala;
         }else{
             throw new IllegalArgumentException("Formatação errada"
@@ -88,23 +101,48 @@ public class Aula implements Comparable<Aula>{
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Turma");
         }                
-  
+        this.dia=semana;
+        
+        int flag=0;
+        
+        for(int i=0;i<dados.getAulas().size();i++){
+            if(dados.getAulas().get(i).compareTo(this)==1){
+                flag=1;
+            }
+        }
+        
+        if(flag!=1){
+             dados.getAulas().add(this);
+        }
+        
     }
    
-        public Hora getHora_inicial() {
+    public Hora getHoraInicial() {
         return hora_inicial;
     }
 
-    public void setHora_inicial(Hora hora_inicial) {
-        this.hora_inicial = hora_inicial;
+    public void setHoraInicial(Hora hora_inicial) {
+        if (hora_inicial.getHora()<25 && hora_inicial.getHora()>0 
+                && hora_inicial.getMinuto()<=59 && hora_inicial.getMinuto()>=0 
+                && hora_inicial.getHora()*60+hora_inicial.getMinuto()
+                    <this.hora_final.getHora()*60+hora_final.getMinuto()){
+         this.hora_inicial = hora_inicial;   
+        }
+        
     }
 
-    public Hora getHora_final() {
+    public Hora getHoraFinal() {
         return hora_final;
     }
 
-    public void setHora_final(Hora hora_final) {
-        this.hora_final = hora_final;
+    public void setHoraFinal(Hora hora_final) {
+        if (hora_final.getHora()<25 && hora_final.getHora()>0 
+                && hora_final.getMinuto()<=59 && hora_final.getMinuto()>=0 
+                && this.getHoraInicial().getHora()*60+this.getHoraInicial().getMinuto()
+                    <hora_final.getHora()*60+hora_inicial.getMinuto()){
+            this.hora_final = hora_final;
+        }
+            
     }
 
     public Professor getProfessor() {
@@ -131,46 +169,55 @@ public class Aula implements Comparable<Aula>{
         this.turma = turma;
     }
 
+    public DiaSemana getDia() {
+        return dia;
+    }
+
+    public void setDia(DiaSemana dia) {
+        this.dia = dia;
+    }
+
     @Override
     public int compareTo(Aula o) {
         
- 
         if(o.getSala()==this.getSala()
                 && o.getTurma()== this.getTurma()
                 && o.getProfessor()== this.getProfessor()
-                && o.getHora_inicial().compareTo(this.getHora_inicial())==1
-                && o.getHora_final().compareTo(this.getHora_final())==1)
-        {
+                && o.getHoraInicial().compareTo(this.getHoraInicial())==1
+                && o.getHoraFinal().compareTo(this.getHoraFinal())==1
+                && o.getDia()==this.getDia())
+        {            
             return 1;//A turma e igual a outra
         }        
-            
-    
+
        return 0;   
     }
     
+    public int VerificarHora(Aula o){
     
-    public int Verificar_hora(Aula o){
-    
-        int hora_i = this.getHora_inicial().getHora()
-                * 60 + this.getHora_inicial().getMinuto();
-        int hora_f = this.getHora_final().getHora()
-                * 60 + this.getHora_final().getMinuto();
-        int ohora_i = o.getHora_inicial().getHora()
-                * 60 + o.getHora_inicial().getMinuto();
-        int ohora_f = o.getHora_final().getHora()
-                * 60 + o.getHora_final().getMinuto();
+        int hora_i = this.getHoraInicial().getHora()
+                * 60 + this.getHoraInicial().getMinuto();
+        int hora_f = this.getHoraFinal().getHora()
+                * 60 + this.getHoraFinal().getMinuto();
+        int ohora_i = o.getHoraInicial().getHora()
+                * 60 + o.getHoraInicial().getMinuto();
+        int ohora_f = o.getHoraFinal().getHora()
+                * 60 + o.getHoraFinal().getMinuto();
 
-        if (hora_i >= ohora_i && hora_i <= ohora_f
-                && hora_f >= ohora_i && hora_f <= ohora_f) {
+        if(this.getDia()==o.getDia()){
+        
+            if (hora_i >= ohora_i && hora_i <= ohora_f
+                    && hora_f >= ohora_i && hora_f <= ohora_f) {
 
-            return 1;
-
+                return 1;
+            }   
         }
-        
         return 0;
-        
-    
     }
     
+    public Boolean removeAula(){
+        
+       return dados.getAulas().remove(this);    
+    }
 
 }

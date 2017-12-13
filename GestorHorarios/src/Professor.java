@@ -1,5 +1,5 @@
 
-enum Grau_Académico{
+enum GrauAcadémico{
     Douturamento,
     Mestrado,
     Licenciamento;
@@ -8,10 +8,14 @@ enum Grau_Académico{
 public class Professor {
     private String nome;
     private int idade;
-    private Grau_Académico grau_Académico;
+    private GrauAcadémico grau_Académico;
+    private Dados dados;
     
-    public Professor(String nome, int idade,Grau_Académico grau_Académico)
-                                               throws IllegalArgumentException {
+    public Professor(Dados dados, String nome, int idade,
+            GrauAcadémico grau_Académico)throws IllegalArgumentException {
+       
+        this.dados=dados;
+        
         if(!nome.isEmpty() && nome.length()>2){
             this.nome = nome;
         }else{
@@ -26,7 +30,19 @@ public class Professor {
         }
         
         this.grau_Académico = grau_Académico;
-
+       
+        int flag=0;
+        
+        for(int i=0;i<dados.getProfessores().size();i++){
+            if(dados.getProfessores().get(i).equals(this)){
+                flag=1;
+            }
+        }
+        
+        if(flag!=1){
+               dados.getProfessores().add(this);
+        } 
+  
     }
 
     public String getNome() {
@@ -49,15 +65,37 @@ public class Professor {
         }    
     }
 
-    public Grau_Académico getGrau_Académico() {
+    public GrauAcadémico getGrauAcadémico() {
         return grau_Académico;
     }
 
-    public void setGrau_Académico(Grau_Académico grau_Académico) {
+    public void setGrauAcadémico(GrauAcadémico grau_Académico) {
         this.grau_Académico = grau_Académico;
     }
 
-    
-    
-    
+    public void remove_professor(){
+        
+        if(dados.getProfessores().remove(this)){
+            
+            for(int i=0;i<dados.getProfessores().size();i++){
+                
+                if(dados.getAulas().get(i).getProfessor().equals(this)){
+                    dados.getAulas().remove(i);
+                }            
+            }            
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Professor))
+            return false;
+        
+        if(((Professor)obj).getNome()==this.getNome() 
+                && ((Professor)obj).getIdade()==this.getIdade()
+                        && ((Professor)obj).getGrauAcadémico()==this.getGrauAcadémico())
+            return true;
+        
+        return false;
+    }  
 }

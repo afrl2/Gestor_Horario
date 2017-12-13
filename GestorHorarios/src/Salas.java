@@ -33,7 +33,7 @@
     
     DFM {
         public String toString(){
-            return "Departamento de Engenharia Electrotécnica";
+            return "Departamento de Física e Matemática";
         } 
     },       
 }
@@ -42,10 +42,13 @@ public class Salas implements Comparable<Salas> {
     
     private Departamentos departamento;
     private int numero;
-    
-    public Salas(Departamentos departamento, int numero) 
-                                                throws IllegalArgumentException{
-          
+    private Dados dados;
+     
+    public Salas(Dados dados,Departamentos departamento, int numero)
+            throws IllegalArgumentException{
+       
+        this.dados=dados;
+        
         if(departamento!=null){
              this.departamento=departamento;
         }else{
@@ -59,7 +62,19 @@ public class Salas implements Comparable<Salas> {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Número");
         }
-           
+        
+        int flag=0;
+        
+        for(int i=0;i<dados.getSalas().size();i++){
+            if(dados.getSalas().get(i).compareTo(this)==1){
+                flag=1;
+            }
+        }
+        
+        if(flag!=1){
+            dados.getSalas().add(this); 
+        }
+              
     }
 
     public Departamentos getDepartamento() {
@@ -82,7 +97,7 @@ public class Salas implements Comparable<Salas> {
     @Override
     public int compareTo(Salas o) {
         
-          if(o.getNumero()== this.getNumero()
+          if (o.getNumero()== this.getNumero()
                 && o.getDepartamento()== this.getDepartamento())
         {
             return 1;//A turma e igual a outra
@@ -92,5 +107,31 @@ public class Salas implements Comparable<Salas> {
         }
         
     }
+    
+    public void removeSalas(){
+        
+        if(dados.getSalas().remove(this)){
+            
+            for(int i=0;i<dados.getAulas().size();i++){
+                
+                if(dados.getAulas().get(i).getSala().compareTo(this)==1){
+                    dados.getAulas().remove(i);
+                }            
+            }            
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Salas))
+            return false;
+        
+        if(((Salas)obj).getDepartamento()==this.getDepartamento() && ((Salas)obj).getNumero()==this.getNumero())
+            return true;
+        return false;
+            
+    }
+    
+    
     
 }

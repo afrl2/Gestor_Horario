@@ -1,5 +1,5 @@
 
-enum Tipo_Turma{
+enum TipoTurma{
     Prática,
     Teórica,
     Teórica_ou_Prática;
@@ -9,11 +9,15 @@ public class Turma implements Comparable<Turma> {
     
     private int numero;
     private String disciplina;
-    private Tipo_Turma tipoTurma;
+    private TipoTurma tipoTurma;
+    private Dados dados;
 
-    public Turma(int numero,String disciplina, Tipo_Turma tipoTurma)
+    public Turma(Dados dados ,int numero ,String disciplina ,TipoTurma tipoTurma)
                                                 throws IllegalArgumentException
     {
+        
+        this.dados=dados;
+        
         if(numero>0){
             this.numero=numero;
         }else{
@@ -29,13 +33,26 @@ public class Turma implements Comparable<Turma> {
         }
         
         this.tipoTurma=tipoTurma;
+        
+        int flag=0;
+        
+        for(int i=0;i<dados.getTurmas().size();i++){
+            if(dados.getTurmas().get(i).compareTo(this)==1){
+                flag=1;
+            }
+        }
+        
+        if(flag!=1){
+             dados.getTurmas().add(this);
+        }
+           
     }
     
-    public Tipo_Turma getTipoTurma() {
+    public TipoTurma getTipoTurma() {
         return tipoTurma;
     }
 
-    public void setTipoTurma(Tipo_Turma tipoTurma) {
+    public void setTipoTurma(TipoTurma tipoTurma) {
         this.tipoTurma = tipoTurma;
     }
 
@@ -62,13 +79,36 @@ public class Turma implements Comparable<Turma> {
                 && o.getNumero()== this.getNumero()
                 && o.getTipoTurma()== this.getTipoTurma() )
         {
-            return 1;//A turma e igual a outra
-            
-            
+            return 1;//A turma e igual a outra   
         }else{
             return 0;//A turma e diferente a outra
         }
                  
     }   
+        
+    public void removeSalas(){
+        
+        if(dados.getTurmas().remove(this)){
+            
+            for(int i=0;i<dados.getAulas().size();i++){
+                
+                if(dados.getAulas().get(i).getTurma().compareTo(this)==1){
+                    dados.getAulas().remove(i);
+                }            
+            }            
+        }
+    }
     
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Turma))
+            return false;
+        
+        if(((Turma)obj).getDisciplina()==this.getDisciplina() && ((Turma)obj).getNumero()==this.getNumero() &&
+                ((Turma)obj).getTipoTurma()==this.getTipoTurma())
+            return true;
+        return false;
+            
+    }
+
 }
