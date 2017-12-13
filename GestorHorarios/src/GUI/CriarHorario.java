@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import Dados.*;
+
 /**
  *
  * @author User
@@ -16,6 +18,17 @@ public class CriarHorario extends javax.swing.JPanel {
      */
     public CriarHorario() {
         initComponents();
+        for(Curso c : Curso.values()){
+            jComboBox1.addItem(c.toString());
+        }
+        for(Semestre s: Semestre.values()){
+            jComboBox1.addItem(s.toString());
+        }
+        for(Ano a:Ano.values()){
+            jComboBox1.addItem(a.toString());
+        }
+        
+        
     }
 
     /**
@@ -67,6 +80,11 @@ public class CriarHorario extends javax.swing.JPanel {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setSelectedIndex(-1);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -139,6 +157,11 @@ public class CriarHorario extends javax.swing.JPanel {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
