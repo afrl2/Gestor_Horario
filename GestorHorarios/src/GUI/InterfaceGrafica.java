@@ -208,8 +208,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         JFrame frame=new JFrame();
         JPanel p = new CriarHorario(this,frame,d);
         frame.add(p);
-        frame.setPreferredSize(new Dimension(600,600));
-        frame.setSize(600, 600);
+        frame.setSize(700, 600);
         frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -219,8 +218,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         JFrame frame=new JFrame();
         JPanel p = new GerirHorario(this,frame,d);
         frame.add(p);
-        frame.setPreferredSize(new Dimension(700,700));
-        frame.setSize(600, 600);
+        frame.setSize(700, 600);
         frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
