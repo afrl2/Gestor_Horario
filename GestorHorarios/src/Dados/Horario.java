@@ -200,7 +200,7 @@ enum Ano{
     };
 }
 
-public class Horario implements Comparable<Horario>{
+public class Horario {
 
     private List<Aula> aulas;
     private Curso curso;
@@ -311,15 +311,5 @@ public class Horario implements Comparable<Horario>{
         return dados.getHorarios().remove(this);
         
     }
-
-    @Override
-    public int compareTo(Horario o) {
-        if (this.ano == o.ano 
-                && this.curso == o.curso 
-                && this.semestre == o.semestre){
-            return 1;//turmas como tudo igual menos aulas;
-        }else{
-            return 0;
-        }     
-    }
+    
 }
