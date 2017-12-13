@@ -6,29 +6,50 @@
 package GUI;
 
 import Dados.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.Window;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author User
  */
 public class CriarHorario extends javax.swing.JPanel {
-
+    javax.swing.JFrame frameInicial;
+    javax.swing.JFrame frame;
+    Dados dados;
     /**
      * Creates new form CriarHorario
      */
-    public CriarHorario() {
+    public CriarHorario(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
         for(Curso c : Curso.values()){
             jComboBox1.addItem(c.toString());
+            jComboBox1.setSelectedItem(null);
         }
         for(Semestre s: Semestre.values()){
-            jComboBox1.addItem(s.toString());
+            jComboBox2.addItem(s.toString());
+            jComboBox2.setSelectedItem(null);
         }
         for(Ano a:Ano.values()){
-            jComboBox1.addItem(a.toString());
+            jComboBox3.addItem(a.toString());
+            jComboBox3.setSelectedItem(null);
         }
         
+        this.frameInicial=frameInicial;
+        this.frame=frame;
+        this.dados=dados;
         
+        centreWindow(frame);
+
+    }
+    
+    public static void centreWindow(Window frame) {
+    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+    frame.setLocation(x, y);
     }
 
     /**
@@ -78,24 +99,34 @@ public class CriarHorario extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Semestre:   ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setSelectedIndex(-1);
+        jComboBox1.setName("Curso"); // NOI18N
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setName("Semestre"); // NOI18N
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setName("Ano"); // NOI18N
 
         jButton1.setText("Criar Horário");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/undo.png"))); // NOI18N
         jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jButton2.setDefaultCapable(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -109,10 +140,10 @@ public class CriarHorario extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, 210, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, 0, 338, Short.MAX_VALUE)
                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(171, 171, 171))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -162,6 +193,53 @@ public class CriarHorario extends javax.swing.JPanel {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        frameInicial.setVisible(true);
+        frame.dispose();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(jComboBox1.getSelectedItem()!=null && jComboBox2.getSelectedItem()!=null && jComboBox3.getSelectedItem()!=null){
+            Curso Cescolhido=null;
+            Semestre Sescolhido=null;
+            Ano Aescolhido=null;
+            
+            for(Curso c : Curso.values()){
+                if(c.toString()==jComboBox1.getSelectedItem().toString()){
+                    Cescolhido=c;
+                }
+            }
+            for(Semestre s : Semestre.values()){
+                if(s.toString()==jComboBox2.getSelectedItem().toString()){
+                    Sescolhido=s;
+                }
+            }
+            for(Ano a : Ano.values()){
+                if(a.toString()==jComboBox3.getSelectedItem().toString()){
+                    Aescolhido=a;
+                }
+            }
+            
+            Horario h=new Horario(dados,Cescolhido,Sescolhido,Aescolhido);
+            frameInicial.setVisible(true);
+            frame.dispose();
+        }else{
+            if(jComboBox1.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jComboBox1.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(jComboBox2.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jComboBox2.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(jComboBox3.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jComboBox3.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
