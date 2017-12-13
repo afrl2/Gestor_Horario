@@ -66,7 +66,6 @@ public class InterfaceGrafica extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(141, 141, 157));
-        setPreferredSize(new java.awt.Dimension(600, 500));
 
         jTabbedPane1.setBackground(new java.awt.Color(141, 141, 157));
         jTabbedPane1.setName(""); // NOI18N
@@ -79,6 +78,11 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         });
 
         jButton2.setText("Gerir Horário");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -208,9 +212,18 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         frame.setSize(600, 600);
         frame.setVisible(true);
         this.setVisible(false);
-        
-          
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        JFrame frame=new JFrame();
+        JPanel p = new GerirHorario(this,frame,d);
+        frame.add(p);
+        frame.setPreferredSize(new Dimension(700,700));
+        frame.setSize(600, 600);
+        frame.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

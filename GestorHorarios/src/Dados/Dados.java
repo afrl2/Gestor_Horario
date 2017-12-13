@@ -62,19 +62,19 @@ public class Dados {
         this.professores = professores;
     }
     
-    public String getHorariosNome(Horario horario){
+    public String getHorariosNome(Horario horario,int i){
         int aux=0;
         String resultado;
         
-        for(int k=0;k<horarios.size();k++){
+        for(int k=0;k<i;k++){
             if (horario.compareTo(horarios.get(k))==1){
                 aux++;
             }
         }
         
-        resultado=(" - Curso:" +horario.getCurso().toString()
-                      +" Ano:"+horario.getAno()
-                      +" Semestre:"+horario.getSemestre()
+        resultado=(horario.getCurso().toString()
+                      +" "+horario.getAno()
+                      +" "+horario.getSemestre() + " - "
                       + aux);
                 
         return resultado;

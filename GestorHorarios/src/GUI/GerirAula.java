@@ -13,16 +13,14 @@ import javax.swing.JComboBox;
  *
  * @author User
  */
-public class GerirHorario extends javax.swing.JFrame {
+public class GerirAula extends javax.swing.JFrame {
 
     /**
      * Creates new form GerirHorario
      */
     Dados dados;
     
-    public GerirHorario() {
-        initComponents();
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -589,7 +587,7 @@ public class GerirHorario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GerirHorario().setVisible(true);
+                //new GerirHorario().setVisible(true);
             }
         });
     }
