@@ -6,7 +6,7 @@ import Dados.Dados;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Horario {
+public class Horario implements Comparable<Horario>{
 
     private List<Aula> aulas;
     private Curso curso;
@@ -118,4 +118,14 @@ public class Horario {
         
     }
     
+    @Override
+    public int compareTo(Horario o) {
+        if (this.ano == o.ano 
+                && this.curso == o.curso 
+                && this.semestre == o.semestre){
+            return 1;//turmas como tudo igual menos aulas;
+        }else{
+            return 0;
+        }     
+    }
 }
