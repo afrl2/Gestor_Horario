@@ -6,18 +6,31 @@
 package GUI;
 
 import javax.swing.*;
+import Dados.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.Window;
 
 /**
  *
  * @author User
  */
 public class InterfaceGrafica extends javax.swing.JFrame {
-
+    Dados d;
     /**
      * Creates new form InterfaceGrafica
      */
     public InterfaceGrafica() {
         initComponents();
+        centreWindow(this);
+        d=new Dados();
+    }
+    
+    public static void centreWindow(Window frame) {
+    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+    frame.setLocation(x, y);
     }
 
     /**
@@ -59,6 +72,11 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         jTabbedPane1.setName(""); // NOI18N
 
         jButton4.setText("Criar Horário");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Gerir Horário");
 
@@ -181,6 +199,19 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        JFrame frame=new JFrame();
+        JPanel p = new CriarHorario(this,frame,d);
+        frame.add(p);
+        frame.setPreferredSize(new Dimension(600,600));
+        frame.setSize(600, 600);
+        frame.setVisible(true);
+        this.setVisible(false);
+        
+          
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,10 +243,12 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InterfaceGrafica().setVisible(true);
-                JMenu jMenu1=new JMenu();
+               
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
