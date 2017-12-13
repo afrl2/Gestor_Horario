@@ -46,10 +46,10 @@ public class CriarHorario extends javax.swing.JPanel {
     }
     
     public static void centreWindow(Window frame) {
-    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
-    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
-    frame.setLocation(x, y);
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+        frame.setLocation(x, y);
     }
 
     /**
@@ -223,8 +223,11 @@ public class CriarHorario extends javax.swing.JPanel {
                     Aescolhido=a;
                 }
             }
-            
-            Horario h=new Horario(dados,Cescolhido,Sescolhido,Aescolhido);
+            try{
+                Horario h=new Horario(dados,Cescolhido,Sescolhido,Aescolhido);
+            }catch(IllegalArgumentException e){
+                JOptionPane.showMessageDialog(null, "Mestrado nao apresenta opcao de 3 ano", "Mestrado", JOptionPane.ERROR_MESSAGE);
+            }
             frameInicial.setVisible(true);
             frame.dispose();
         }else{
