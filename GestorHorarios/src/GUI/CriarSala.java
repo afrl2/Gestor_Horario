@@ -11,22 +11,13 @@ import Dados.*;
  *
  * @author User
  */
-public class CriarHorario extends javax.swing.JPanel {
+public class CriarSala extends javax.swing.JPanel {
 
     /**
      * Creates new form CriarHorario
      */
-    public CriarHorario() {
+    public CriarSala() {
         initComponents();
-        for(Curso c : Curso.values()){
-            jComboBox1.addItem(c.toString());
-        }
-        for(Semestre s: Semestre.values()){
-            jComboBox1.addItem(s.toString());
-        }
-        for(Ano a:Ano.values()){
-            jComboBox1.addItem(a.toString());
-        }
         
         
     }
@@ -84,8 +75,6 @@ public class CriarHorario extends javax.swing.JPanel {
         jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jButton2.setDefaultCapable(false);
-
-        jTextField3.setText("jTextField3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
