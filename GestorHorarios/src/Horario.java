@@ -5,108 +5,126 @@ import java.util.List;
 enum Curso{
     //Licenciaturas
     Lic_EngBiol  {
+        @Override
         public String toString(){
             return "Engenharia Biológica";
         }
     },
     
     Lic_EngBiom  {
+        @Override
         public String toString(){
             return "Engenharia Biomédica - Bioeletrónica";
         }
     },
     
     Lic_EngCivil  {
+        @Override
         public String toString(){
             return "Engenharia Civil";
         }
     },
     
     Lic_EngElectrmec  {
+        @Override
         public String toString(){
             return "Engenharia Electromecânica";
         }
     },
     
     Lic_EngElecttec  {
+        @Override
         public String toString(){
             return "Engenharia Electrotécnica";
         }
     },
     
     Lic_EngGI  {
+        @Override
         public String toString(){
             return "Engenharia e Gestão Industrial";
         }
     },
     
     Lic_EngInf  {
+        @Override
         public String toString(){
             return "Engenharia Informática";
         }
     },
     
     Lic_EngInfEU  {
+        @Override
         public String toString(){
             return "Engenharia Informática - Curso Europeu";
         }
     },
     
     Lic_EngQui  {
+        @Override
         public String toString(){
             return "Engenharia Química";
         }
     },
     
     Lic_EngMec  {
+        @Override
         public String toString(){
             return "Engenharia Mecânica";
         }
     },
     
     Lic_BioEng  {
+        @Override
         public String toString(){
             return "Bioengenharia ";
         }
     },
 //Mestrados    
     Mest_ComE  {
+        @Override
         public String toString(){
             return "Mestrado em Comércio Electrónico";
         }
     },
     
     Mest_EngCiv  {
+        @Override
         public String toString(){
             return "Mestrado em Engenharia Civil - Especialização em Contrução Urbana";
         }
     },
     
     Mest_EngElectrtec  {
+        @Override
         public String toString(){
             return "Mestrado em Engenharia Electrotécnica";
         }
     },
         
     Mest_EngElectrmec  {
+        @Override
         public String toString(){
             return "Mestrado em Engenharia Eletromecânica";
         }
     },
     
     Mest_EngGI {
+        @Override
         public String toString(){
             return "Mestrado em Engenharia e Gestão Industrial";
         }
     },
     
     Mest_EngMec {
+        @Override
         public String toString(){
             return "Mestrado em Engenharia Mecânica";
         }
     },
     
     Mest_Erasmus {
+        @Override
         public String toString(){
             return "Mestrado Erasmus Mundus - Mobilidade Elétrica e Sistemas"
                     + " de Energia";
@@ -114,18 +132,21 @@ enum Curso{
     },
     
     Mest_InfSis {
+        @Override
         public String toString(){
             return "Mestrado em Informática e Sistemas";
         }
     },
     
     Mest_InstBio {
+        @Override
         public String toString(){
             return "Mestrado em Instrumentação Biomédica";
         }
     },
     
     Mest_ProcQuiBio{
+        @Override
         public String toString(){
             return "Mestrado em Processos Químicos e Biológicos";
         }
@@ -137,12 +158,14 @@ enum Curso{
 enum Semestre{
 
     sem1{
+        @Override
         public String toString(){
             return "1ºSemestre";
         }
     },
     
     sem2{
+        @Override
         public String toString(){
             return "2ºSemestre";
         }
@@ -152,18 +175,21 @@ enum Semestre{
 
 enum Ano{
     ano1{
+        @Override
         public String toString(){
             return "1º Ano";
         }
     },
     
     ano2{
+        @Override
         public String toString(){
             return "2º Ano";
         }
     },
     
     ano3{
+        @Override
         public String toString(){
             return "3º Ano";
         }
@@ -179,7 +205,9 @@ public class Horario {
     private Dados dados;
 
     public Horario(Dados dados ,Curso curso ,Semestre semestre ,Ano ano) throws IllegalArgumentException {
- 
+        
+        boolean flag=curso.toString().contains("Mestrado");
+              
         this.dados=dados;
         
         if (curso != null) {
@@ -197,16 +225,24 @@ public class Horario {
         }
 
         if (ano != null) {
-            this.ano = ano;
+            if (flag){
+                if(ano!=Ano.ano3){
+                    this.ano= ano;
+                }else{
+                    throw new IllegalArgumentException("Formatação errada"
+                    + " no campo Ano");
+                }
+            }else{
+                this.ano=ano;
+            }
+            
         } else {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Ano");
         }
            
         aulas = new ArrayList<>();
-        dados.getHorarios().add(this);
-        
-        
+        dados.getHorarios().add(this);   
     }
 
     public Curso getCurso() {
@@ -241,13 +277,13 @@ public class Horario {
         this.aulas = aulas;
     }
     
-    public boolean adicionar_aula(Aula aula){
+    public boolean adicionarAula(Aula aula){
       
         int flag_comp=0;
         
         for(int i=0;i<aulas.size();i++){
             if(aula.compareTo(aulas.get(i))==1
-                    ||aula.Verificar_hora(aulas.get(i))==1)
+                    ||aula.VerificarHora(aulas.get(i))==1)
             flag_comp=1;
         }
         
@@ -260,13 +296,13 @@ public class Horario {
         
     }
     
-    public Boolean remove_aula(Aula aula){
+    public Boolean removeAula(Aula aula){
         
         return aulas.remove(aula);
         
     }
         
-    public Boolean Apagar_horario(){
+    public Boolean ApagarHorario(){
         
         return dados.getHorarios().remove(this);
         

@@ -33,7 +33,7 @@
     
     DFM {
         public String toString(){
-            return "Departamento de Engenharia Electrotécnica";
+            return "Departamento de Física e Matemática";
         } 
     },       
 }
@@ -74,8 +74,7 @@ public class Salas implements Comparable<Salas> {
         if(flag!=1){
             dados.getSalas().add(this); 
         }
-        
-          
+              
     }
 
     public Departamentos getDepartamento() {
@@ -98,7 +97,7 @@ public class Salas implements Comparable<Salas> {
     @Override
     public int compareTo(Salas o) {
         
-          if(o.getNumero()== this.getNumero()
+          if (o.getNumero()== this.getNumero()
                 && o.getDepartamento()== this.getDepartamento())
         {
             return 1;//A turma e igual a outra
@@ -109,7 +108,7 @@ public class Salas implements Comparable<Salas> {
         
     }
     
-    public void remove_salas(){
+    public void removeSalas(){
         
         if(dados.getSalas().remove(this)){
             

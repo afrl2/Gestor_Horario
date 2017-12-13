@@ -1,5 +1,5 @@
 
-enum Tipo_Turma{
+enum TipoTurma{
     Prática,
     Teórica,
     Teórica_ou_Prática;
@@ -9,10 +9,10 @@ public class Turma implements Comparable<Turma> {
     
     private int numero;
     private String disciplina;
-    private Tipo_Turma tipoTurma;
+    private TipoTurma tipoTurma;
     private Dados dados;
 
-    public Turma(Dados dados ,int numero ,String disciplina ,Tipo_Turma tipoTurma)
+    public Turma(Dados dados ,int numero ,String disciplina ,TipoTurma tipoTurma)
                                                 throws IllegalArgumentException
     {
         
@@ -48,11 +48,11 @@ public class Turma implements Comparable<Turma> {
            
     }
     
-    public Tipo_Turma getTipoTurma() {
+    public TipoTurma getTipoTurma() {
         return tipoTurma;
     }
 
-    public void setTipoTurma(Tipo_Turma tipoTurma) {
+    public void setTipoTurma(TipoTurma tipoTurma) {
         this.tipoTurma = tipoTurma;
     }
 
@@ -79,17 +79,14 @@ public class Turma implements Comparable<Turma> {
                 && o.getNumero()== this.getNumero()
                 && o.getTipoTurma()== this.getTipoTurma() )
         {
-            return 1;//A turma e igual a outra
-            
-            
+            return 1;//A turma e igual a outra   
         }else{
             return 0;//A turma e diferente a outra
         }
                  
     }   
-    
-      
-    public void remove_salas(){
+        
+    public void removeSalas(){
         
         if(dados.getTurmas().remove(this)){
             

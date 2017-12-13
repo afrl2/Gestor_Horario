@@ -1,5 +1,5 @@
 
-enum Grau_Académico{
+enum GrauAcadémico{
     Douturamento,
     Mestrado,
     Licenciamento;
@@ -8,11 +8,11 @@ enum Grau_Académico{
 public class Professor {
     private String nome;
     private int idade;
-    private Grau_Académico grau_Académico;
+    private GrauAcadémico grau_Académico;
     private Dados dados;
     
     public Professor(Dados dados, String nome, int idade,
-            Grau_Académico grau_Académico)throws IllegalArgumentException {
+            GrauAcadémico grau_Académico)throws IllegalArgumentException {
        
         this.dados=dados;
         
@@ -65,11 +65,11 @@ public class Professor {
         }    
     }
 
-    public Grau_Académico getGrau_Académico() {
+    public GrauAcadémico getGrauAcadémico() {
         return grau_Académico;
     }
 
-    public void setGrau_Académico(Grau_Académico grau_Académico) {
+    public void setGrauAcadémico(GrauAcadémico grau_Académico) {
         this.grau_Académico = grau_Académico;
     }
 
@@ -93,13 +93,9 @@ public class Professor {
         
         if(((Professor)obj).getNome()==this.getNome() 
                 && ((Professor)obj).getIdade()==this.getIdade()
-                        && ((Professor)obj).getGrau_Académico()==this.getGrau_Académico())
+                        && ((Professor)obj).getGrauAcadémico()==this.getGrauAcadémico())
             return true;
         
         return false;
-    }
-    
-    
-    
-    
+    }  
 }
