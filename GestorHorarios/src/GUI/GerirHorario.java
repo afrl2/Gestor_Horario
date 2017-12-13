@@ -20,9 +20,8 @@ public class GerirHorario extends javax.swing.JFrame {
      */
     Dados dados;
     
-    public GerirHorario(Dados dados) {
+    public GerirHorario() {
         initComponents();
-        this.dados=dados;
     }
 
     /**
@@ -176,10 +175,7 @@ public class GerirHorario extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        JComboBox lista = new JComboBox(System.out.print(dados.getHorarios().get()+"Curso"+dados.getHorarios().));
-        petList.setSelectedIndex(4);
-        petList.addActionListener(this);
-        
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
