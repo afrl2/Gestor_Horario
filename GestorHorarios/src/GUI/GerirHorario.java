@@ -74,6 +74,12 @@ public class GerirHorario extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Curso:   ");
 
+        jTextField2.setFocusable(false);
+
+        jTextField3.setFocusable(false);
+
+        jTextField4.setFocusable(false);
+
         jButton1.setText("Apagar Horário");
 
         jButton2.setText("Modificar Horário");
@@ -114,7 +120,7 @@ public class GerirHorario extends javax.swing.JFrame {
                         .addComponent(jButton3))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

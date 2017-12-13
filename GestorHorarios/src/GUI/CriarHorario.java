@@ -38,6 +38,7 @@ public class CriarHorario extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
 
         setToolTipText("");
+        setPreferredSize(new java.awt.Dimension(600, 500));
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(141, 141, 157));
@@ -93,15 +94,15 @@ public class CriarHorario extends javax.swing.JPanel {
                     .addComponent(jComboBox1, 0, 210, Short.MAX_VALUE)
                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(171, 171, 171))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE))
+                        .addComponent(jTextField1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(197, 197, 197)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                         .addGap(88, 88, 88)
                         .addComponent(jButton2)
                         .addGap(22, 22, 22)))
