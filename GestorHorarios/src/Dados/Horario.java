@@ -1,4 +1,8 @@
+package Dados;
 
+
+import Dados.Aula;
+import Dados.Dados;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -307,4 +311,5 @@ public class Horario {
         return dados.getHorarios().remove(this);
         
     }
+    
 }

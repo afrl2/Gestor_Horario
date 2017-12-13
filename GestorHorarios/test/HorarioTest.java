@@ -4,6 +4,16 @@
  * and open the template in the editor.
  */
 
+import Dados.Semestre;
+import Dados.Ano;
+import Dados.Curso;
+import Dados.Horario;
+import Dados.Professor;
+import Dados.Salas;
+import Dados.Departamentos;
+import Dados.Turma;
+import Dados.Aula;
+import Dados.Dados;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+import Dados.Salas;
+import Dados.Departamentos;
+import Dados.Dados;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

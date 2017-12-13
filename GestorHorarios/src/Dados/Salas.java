@@ -1,3 +1,8 @@
+package Dados;
+
+
+import Dados.Dados;
+
  enum Departamentos{
   
     DEC  {
