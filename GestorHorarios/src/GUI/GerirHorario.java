@@ -233,6 +233,8 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
         if(jComboBox1.getItemCount()>0 && jComboBox1.getSelectedIndex()!=-1){
             List<Horario> listaH=dados.getHorarios();
             listaH.remove(jComboBox1.getSelectedIndex());
+            frameInicial.setVisible(true);
+            frame.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Nao existem horarios para remover", "Remover Horario", JOptionPane.ERROR_MESSAGE);
         }
