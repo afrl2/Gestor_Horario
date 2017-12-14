@@ -28,7 +28,7 @@ javax.swing.JFrame frameInicial;
      * Creates new form GerirHorario
      */    
     public GerirSala(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
-        
+        initComponents();
         List<Salas> listaH=dados.getSalas();
         for(int i=0;i<listaH.size();i++){
             jComboBox1.addItem(dados.getSalasNome(listaH.get(i)));
