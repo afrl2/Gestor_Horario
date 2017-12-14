@@ -19,15 +19,15 @@ public class Professor {
        
         this.dados=dados;
         
-        if(!nome.isEmpty() && nome.length()>2){
+        if (!nome.isEmpty() && nome.length()>2){
             this.nome = nome;
-        }else{
+        } else {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo nome");
         }
-        if( (idade<120 && idade>0)){
+        if ((idade<120 && idade>0)){
             this.idade = idade;
-        }else{
+        } else {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo idade");
         }
@@ -36,13 +36,13 @@ public class Professor {
        
         int flag=0;
         
-        for(int i=0;i<dados.getProfessores().size();i++){
+        for (int i=0;i<dados.getProfessores().size();i++){
             if(dados.getProfessores().get(i).equals(this)){
                 flag=1;
             }
         }
         
-        if(flag!=1){
+        if (flag!=1){
                dados.getProfessores().add(this);
         } 
   
@@ -53,7 +53,7 @@ public class Professor {
     }
 
     public void setNome(String nome) {
-        if(!nome.isEmpty() && nome.length()>2){
+        if (!nome.isEmpty() && nome.length()>2){
             this.nome = nome;
         }
     }
@@ -63,7 +63,7 @@ public class Professor {
     }
 
     public void setIdade(int idade) {
-        if(idade<120 && idade>0){
+        if (idade<120 && idade>0){
             this.idade = idade;
         }    
     }
@@ -78,11 +78,11 @@ public class Professor {
 
     public void remove_professor(){
         
-        if(dados.getProfessores().remove(this)){
+        if (dados.getProfessores().remove(this)){
             
-            for(int i=0;i<dados.getProfessores().size();i++){
+            for (int i=0;i<dados.getProfessores().size();i++){
                 
-                if(dados.getAulas().get(i).getProfessor().equals(this)){
+                if (dados.getAulas().get(i).getProfessor().equals(this)){
                     dados.getAulas().remove(i);
                 }            
             }            
@@ -91,10 +91,10 @@ public class Professor {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof Professor))
+        if (!(obj instanceof Professor))
             return false;
         
-        if(((Professor)obj).getNome()==this.getNome() 
+        if (((Professor)obj).getNome()==this.getNome() 
                 && ((Professor)obj).getIdade()==this.getIdade()
                         && ((Professor)obj).getGrauAcadémico()==this.getGrauAcadémico())
             return true;
