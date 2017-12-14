@@ -200,6 +200,15 @@ public class CriarProfessor extends javax.swing.JPanel {
             try{
                 nome=jTextField2.getText();
                 flag=1;
+                float num1;
+
+                try {
+                    num1 = Float.parseFloat(jTextField2.getText());
+                    flag=0;
+                    JOptionPane.showMessageDialog(null, "Por favor nao ponha numeros no nome", "Nome Numerico", JOptionPane.ERROR_MESSAGE);
+                } catch (NumberFormatException e) {
+                    flag=1;
+                }
             }catch(Exception e){
                 flag=0; 
                 JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jTextField2.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
@@ -234,11 +243,11 @@ public class CriarProfessor extends javax.swing.JPanel {
     } 
 
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
