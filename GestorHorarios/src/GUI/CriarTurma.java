@@ -6,28 +6,29 @@
 package GUI;
 
 import Dados.*;
+import static GUI.CriarHorario.centreWindow;
 
 /**
  *
  * @author User
  */
-public class CriarHorario extends javax.swing.JPanel {
-
+public class CriarTurma extends javax.swing.JPanel {
+    javax.swing.JFrame frameInicial;
+    javax.swing.JFrame frame;
+    Dados dados;
     /**
      * Creates new form CriarHorario
      */
-    public CriarHorario() {
+    public CriarTurma(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
-        for(Curso c : Curso.values()){
-            jComboBox1.addItem(c.toString());
-        }
-        for(Semestre s: Semestre.values()){
-            jComboBox1.addItem(s.toString());
-        }
-        for(Ano a:Ano.values()){
-            jComboBox1.addItem(a.toString());
-        }
         
+        this.frameInicial=frameInicial;
+        this.frame=frame;
+        this.dados=dados;
+        //tipo.addItem(TOOL_TIP_TEXT_KEY);
+            
+        
+        centreWindow(frame);
         
     }
 
@@ -44,7 +45,7 @@ public class CriarHorario extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        tipo = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         horini3 = new javax.swing.JFormattedTextField();
@@ -78,7 +79,7 @@ public class CriarHorario extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Disciplina:   ");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setText("Criar Horário");
 
@@ -115,7 +116,7 @@ public class CriarHorario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(horini4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(horini3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +147,7 @@ public class CriarHorario extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                    .addComponent(tipo, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                 .addGap(123, 123, 123)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -178,10 +179,10 @@ public class CriarHorario extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField horini4;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> tipo;
     // End of variables declaration//GEN-END:variables
 }
