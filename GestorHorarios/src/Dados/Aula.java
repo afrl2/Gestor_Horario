@@ -1,18 +1,5 @@
 package Dados;
 
-
-import Dados.Dados;
-
-enum DiaSemana{
-    segunda,
-    terca,
-    quarta,
-    quinta,
-    sexta,
-    sabado,
-    domingo    
-}
-
 class Hora implements Comparable<Hora>{
     private int hora;
     private int minuto; 
