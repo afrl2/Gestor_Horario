@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ItemEvent;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -27,30 +28,29 @@ public class GerirSala extends javax.swing.JFrame {
     /**
      * Creates new form GerirHorario
      */    
-    public GerirSala() {
+    public GerirSala(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         
-//        List<Salas> listaH=dados.getSalas();
-//        for(int i=0;i<listaH.size();i++){
-//            jComboBox1.addItem(dados.getHorariosNome(listaH.get(i),i+1));
-//            jComboBox1.setSelectedItem(null);
-//        }  
-//        jComboBox1.addItemListener(this);
-//        
-//        this.frameInicial=frameInicial;
-//        this.frame=frame;
-//        this.dados=dados;
-//        
-//        centreWindow(frame);
+        List<Salas> listaH=dados.getSalas();
+        for(int i=0;i<listaH.size();i++){
+            jComboBox1.addItem(dados.getSalasNome(listaH.get(i)));
+            jComboBox1.setSelectedItem(null);
+        }  
+        jComboBox1.addItemListener(this);
+        
+        this.frameInicial=frameInicial;
+        this.frame=frame;
+        this.dados=dados;
+        
+        centreWindow(frame);
     }
     
     public void itemStateChanged(ItemEvent e) {
-//        if ((e.getStateChange() == ItemEvent.SELECTED)) {
-//            List<Horario> listaH=dados.getHorarios();
-//            int selection = jComboBox1.getSelectedIndex();
-//            jTextField3.setText(listaH.get(selection).getCurso().toString());
-//            jTextField4.setText(listaH.get(selection).getSemestre().toString());
-//            jTextField2.setText(listaH.get(selection).getAno().toString());
-//        }
+        if ((e.getStateChange() == ItemEvent.SELECTED)) {
+             List<Salas> listaH=dados.getSalas();
+            int selection = jComboBox1.getSelectedIndex();
+            jTextField3.setText(listaH.get(selection).getDepartamento().toString());
+            jTextField4.setText(Integer.toString(listaH.get(selection).getNumero()));     
+        }
     }
     
     
@@ -116,10 +116,22 @@ public class GerirSala extends javax.swing.JFrame {
         jLabel4.setText("Departamento:   ");
 
         jTextField3.setFocusable(false);
+        jTextField3.setName("Departamento"); // NOI18N
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
 
         jTextField4.setFocusable(false);
+        jTextField4.setName("Número de Sala"); // NOI18N
 
         jButton1.setText("Apagar Sala");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Modificar Sala");
 
@@ -127,6 +139,11 @@ public class GerirSala extends javax.swing.JFrame {
         jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton3.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jButton3.setDefaultCapable(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,6 +216,28 @@ public class GerirSala extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        frameInicial.setVisible(true);
+        frame.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:  
+        if(jComboBox1.getItemCount()>0 && jComboBox1.getSelectedIndex()!=-1){
+             List<Salas> listaH=dados.getSalas();
+            listaH.remove(jComboBox1.getSelectedIndex());
+        }else{
+           JOptionPane.showMessageDialog(null, "Nao existem salas para remover",
+                    "Remover salas", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
