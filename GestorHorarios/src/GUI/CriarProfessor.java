@@ -15,14 +15,14 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
-public class CriarHorario extends javax.swing.JPanel {
+public class CriarProfessor extends javax.swing.JPanel {
     javax.swing.JFrame frameInicial;
     javax.swing.JFrame frame;
     Dados dados;
     /**
      * Creates new form CriarHorario
      */
-    public CriarHorario(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
+    public CriarProfessor(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
         for(Curso c : Curso.values()){
             jComboBox1.addItem(c.toString());
