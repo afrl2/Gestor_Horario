@@ -234,7 +234,7 @@ public class GerirProfessor extends javax.swing.JPanel implements ItemListener {
             frameInicial.setVisible(true);
             frame.dispose();
         }else{
-            JOptionPane.showMessageDialog(null, "Nao existem horarios para remover", "Remover Horario", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nao existem professores para remover", "Remover Professores", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
