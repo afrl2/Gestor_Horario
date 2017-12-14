@@ -78,4 +78,12 @@ public class Dados {
                 
         return resultado;
     }
+    
+    public String getSalasNome(Salas sala){
+        
+        String resultado;
+        resultado=(sala.getDepartamento().toString()
+                      +" "+sala.getNumero());
+        return resultado;
+    }
 }
