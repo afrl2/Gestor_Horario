@@ -4,12 +4,6 @@ package Dados;
 import Dados.Dados;
 
 
-enum TipoTurma{
-    Prática,
-    Teórica,
-    Teórica_ou_Prática;
-}
-
 public class Turma implements Comparable<Turma> {
     
     private int numero;

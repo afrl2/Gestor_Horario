@@ -31,8 +31,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="horini4" min="-2" pref="210" max="-2" attributes="0"/>
-                  <Component id="horini3" min="-2" pref="210" max="-2" attributes="0"/>
+                  <Component id="dis" min="-2" pref="210" max="-2" attributes="0"/>
+                  <Component id="numk" min="-2" pref="210" max="-2" attributes="0"/>
                   <Component id="tipo" min="-2" pref="210" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -63,12 +63,12 @@
               <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" max="32767" attributes="0"/>
-                  <Component id="horini3" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="numk" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
-                  <Component id="horini4" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="dis" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -150,8 +150,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Criar Hor&#xe1;rio"/>
+        <Property name="text" type="java.lang.String" value="Criar Turma"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
@@ -167,24 +170,24 @@
         <Property name="defaultCapable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="horini3">
+    <Component class="javax.swing.JFormattedTextField" name="numk">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
           <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="horini3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numkActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="horini4">
+    <Component class="javax.swing.JFormattedTextField" name="dis">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
           <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="horini4ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="disActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
