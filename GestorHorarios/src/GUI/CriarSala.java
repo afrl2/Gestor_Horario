@@ -166,7 +166,8 @@ public class CriarSala extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            int numero;
+            int numero=0;
+            int flag=0;
         if(jComboBox1.getSelectedItem()!=null && jTextField3 !=null){
             Departamentos Descolhido=null;
             
@@ -175,10 +176,17 @@ public class CriarSala extends javax.swing.JPanel {
                     Descolhido=c;
                 }
             }
+           try {
             numero = Integer.parseInt(jTextField3.getText());
-            
+            flag=1;
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jTextField3.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+                flag=0;
+            }
             try{
+                if(flag==1){
                 Salas h=new Salas(dados,Descolhido,numero);
+                }
             }catch(IllegalArgumentException e){
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Aviso", JOptionPane.ERROR_MESSAGE);
             }

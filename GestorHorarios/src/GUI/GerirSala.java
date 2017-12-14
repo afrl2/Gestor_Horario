@@ -6,7 +6,13 @@
 package GUI;
 
 import Dados.Dados;
-import javax.swing.JComboBox;
+import Dados.Horario;
+import Dados.Salas;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.event.ItemEvent;
+import java.util.List;
 
 
 /**
@@ -14,16 +20,46 @@ import javax.swing.JComboBox;
  * @author User
  */
 public class GerirSala extends javax.swing.JFrame {
-
+    javax.swing.JFrame frameInicial;
+    javax.swing.JFrame frame;
+    Dados dados;
+    int selection;
     /**
      * Creates new form GerirHorario
-     */
-    Dados dados;
-    
+     */    
     public GerirSala() {
-        initComponents();
+        
+//        List<Salas> listaH=dados.getSalas();
+//        for(int i=0;i<listaH.size();i++){
+//            jComboBox1.addItem(dados.getHorariosNome(listaH.get(i),i+1));
+//            jComboBox1.setSelectedItem(null);
+//        }  
+//        jComboBox1.addItemListener(this);
+//        
+//        this.frameInicial=frameInicial;
+//        this.frame=frame;
+//        this.dados=dados;
+//        
+//        centreWindow(frame);
     }
-
+    
+    public void itemStateChanged(ItemEvent e) {
+//        if ((e.getStateChange() == ItemEvent.SELECTED)) {
+//            List<Horario> listaH=dados.getHorarios();
+//            int selection = jComboBox1.getSelectedIndex();
+//            jTextField3.setText(listaH.get(selection).getCurso().toString());
+//            jTextField4.setText(listaH.get(selection).getSemestre().toString());
+//            jTextField2.setText(listaH.get(selection).getAno().toString());
+//        }
+    }
+    
+    
+    public static void centreWindow(Window frame) {
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+        frame.setLocation(x, y);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -173,22 +209,7 @@ public class GerirSala extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GerirHorario_old.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GerirHorario_old.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GerirHorario_old.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GerirHorario_old.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+
         //</editor-fold>
 
         /* Create and display the form */
