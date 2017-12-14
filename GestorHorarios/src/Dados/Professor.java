@@ -2,12 +2,6 @@ package Dados;
 
 import Dados.Dados;
 
-enum GrauAcadémico{
-    Douturamento,
-    Mestrado,
-    Licenciamento;
-}
-
 public class Professor {
     private String nome;
     private int idade;
