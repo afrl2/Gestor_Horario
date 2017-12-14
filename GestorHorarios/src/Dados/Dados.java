@@ -1,6 +1,5 @@
 package Dados;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,7 +65,7 @@ public class Dados {
         int aux=0;
         String resultado;
         
-        for(int k=0;k<i;k++){
+        for (int k=0;k<i;k++){
             if (horario.compareTo(horarios.get(k))==1){
                 aux++;
             }

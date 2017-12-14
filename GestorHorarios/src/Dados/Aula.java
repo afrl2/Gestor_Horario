@@ -19,15 +19,15 @@ class Hora implements Comparable<Hora>{
 
     public Hora(int hora, int minuto) throws IllegalArgumentException{
       
-      if(hora>=0 && hora<24){
+      if (hora>=0 && hora<24){
           this.hora = hora;
-      }else{
+      } else {
           throw new IllegalArgumentException("Hora inserida inválida");
       }
       
-      if(minuto>=0 && minuto<60){
+      if (minuto>=0 && minuto<60){
           this.minuto = minuto;
-      }else{
+      } else {
           throw new IllegalArgumentException("Minuto inserido inválida");
       }
         
@@ -76,33 +76,33 @@ public class Aula implements Comparable<Aula>{
         
         try{
             hora_inicial = new Hora(hi,mi);
-        }catch(Exception e){
+        } catch (Exception e){
             throw e;
         }
         
         try{
             hora_final = new Hora(hf,mf);
-        }catch(Exception e){
+        } catch (Exception e){
             throw e;
         }
         
         if (professor != null){
              this.professor = professor;
-        }else{
+        } else {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Professor");
         }
        
         if (sala != null){
               this.sala = sala;
-        }else{
+        } else {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Sala");
         }
                 
-        if(turma !=null){
+        if (turma !=null){
               this.turma = turma;
-        }else{
+        } else {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Turma");
         }                
@@ -110,13 +110,13 @@ public class Aula implements Comparable<Aula>{
         
         int flag=0;
         
-        for(int i=0;i<dados.getAulas().size();i++){
-            if(dados.getAulas().get(i).compareTo(this)==1){
+        for (int i=0;i<dados.getAulas().size();i++){
+            if (dados.getAulas().get(i).compareTo(this)==1){
                 flag=1;
             }
         }
         
-        if(flag!=1){
+        if (flag!=1){
              dados.getAulas().add(this);
         }
         
@@ -185,7 +185,7 @@ public class Aula implements Comparable<Aula>{
     @Override
     public int compareTo(Aula o) {
         
-        if(o.getSala()==this.getSala()
+        if (o.getSala()==this.getSala()
                 && o.getTurma()== this.getTurma()
                 && o.getProfessor()== this.getProfessor()
                 && o.getHoraInicial().compareTo(this.getHoraInicial())==1
@@ -209,7 +209,7 @@ public class Aula implements Comparable<Aula>{
         int ohora_f = o.getHoraFinal().getHora()
                 * 60 + o.getHoraFinal().getMinuto();
 
-        if(this.getDia()==o.getDia()){
+        if (this.getDia()==o.getDia()){
         
             if (hora_i >= ohora_i && hora_i <= ohora_f
                     && hora_f >= ohora_i && hora_f <= ohora_f) {
