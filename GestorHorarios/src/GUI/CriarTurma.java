@@ -30,13 +30,23 @@ public class CriarTurma extends javax.swing.JPanel {
             tipo.addItem(c.toString());
             tipo.setSelectedItem(null);
         }
-            
-        
+                jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/undo.png"))); // NOI18N
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jButton2.setDefaultCapable(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);    
+                }
+        });
         centreWindow(frame);
         
     }
 
-    
+        private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        frameInicial.setVisible(true);
+        frame.dispose();
+    }  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,8 +93,6 @@ public class CriarTurma extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Disciplina:   ");
-
-        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setText("Criar Turma");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -188,9 +196,18 @@ public class CriarTurma extends javax.swing.JPanel {
             int num =0;
             String disci =null;
             TipoTurma tipoesc =null;
-            
-            disci = dis.getText();
-            num = Integer.parseInt(numk.getText());
+            if (dis.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Campo Disciplina não preenchido ", "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+               disci = dis.getText(); 
+            }
+            if (numk.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Campo Número de Turma não preenchido ", "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                num = Integer.parseInt(numk.getText());
+            }
             for(TipoTurma a : TipoTurma.values()){
                 if(a.toString()==tipo.getSelectedItem().toString()){
                     tipoesc=a;
@@ -199,7 +216,7 @@ public class CriarTurma extends javax.swing.JPanel {
             try{
                 Turma h=new Turma(dados,num,disci,tipoesc);
             }catch(IllegalArgumentException e){
-                JOptionPane.showMessageDialog(null, "Mestrado nao apresenta opcao de 3 ano", "Mestrado", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Número ou Disciplina não válido", "Alerta", JOptionPane.ERROR_MESSAGE);
             }
             frameInicial.setVisible(true);
             frame.dispose();
@@ -207,6 +224,7 @@ public class CriarTurma extends javax.swing.JPanel {
             if(tipo.getSelectedItem()==null){
                 JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + tipo.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
             }
+            
 
             
         }
