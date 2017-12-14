@@ -24,19 +24,11 @@ public class CriarProfessor extends javax.swing.JPanel {
      */
     public CriarProfessor(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
-        for(Curso c : Curso.values()){
+        for(GrauAcadémico c : GrauAcadémico.values()){
             jComboBox1.addItem(c.toString());
             jComboBox1.setSelectedItem(null);
         }
-        for(Semestre s: Semestre.values()){
-            jComboBox2.addItem(s.toString());
-            jComboBox2.setSelectedItem(null);
-        }
-        for(Ano a:Ano.values()){
-            jComboBox3.addItem(a.toString());
-            jComboBox3.setSelectedItem(null);
-        }
-        
+
         this.frameInicial=frameInicial;
         this.frame=frame;
         this.dados=dados;
@@ -65,11 +57,11 @@ public class CriarProfessor extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setToolTipText("");
         setPreferredSize(new java.awt.Dimension(600, 500));
@@ -79,7 +71,7 @@ public class CriarProfessor extends javax.swing.JPanel {
         jTextField1.setFont(new java.awt.Font("Modern No. 20", 0, 36)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Criar Horários");
+        jTextField1.setText("Criar Professor");
         jTextField1.setToolTipText("");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,17 +91,6 @@ public class CriarProfessor extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Idade: ");
 
-        jComboBox1.setName("Curso"); // NOI18N
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jComboBox2.setName("Semestre"); // NOI18N
-
-        jComboBox3.setName("Ano"); // NOI18N
-
         jButton1.setText("Criar Horário");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +107,15 @@ public class CriarProfessor extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jTextField2.setText("jTextField2");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setText("jTextField3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -144,21 +134,17 @@ public class CriarProfessor extends javax.swing.JPanel {
                         .addGap(22, 22, 22)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(70, 70, 70))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                    .addComponent(jTextField3)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,36 +152,28 @@ public class CriarProfessor extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(139, 139, 139)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(jTextField2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField3)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(jComboBox3))
+                    .addComponent(jComboBox1))
                 .addGap(113, 113, 113)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(44, 44, 44))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox1, jComboBox2, jComboBox3});
-
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -206,54 +184,69 @@ public class CriarProfessor extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(jComboBox1.getSelectedItem()!=null && jComboBox2.getSelectedItem()!=null && jComboBox3.getSelectedItem()!=null){
-            Curso Cescolhido=null;
-            Semestre Sescolhido=null;
-            Ano Aescolhido=null;
+            String nome=null;
+            int idade=0;
+            int flag=0;
+        if(jComboBox1.getSelectedItem()!=null && jTextField3 !=null){
+            GrauAcadémico Gescolhido=null;
             
-            for(Curso c : Curso.values()){
+            for(GrauAcadémico c : GrauAcadémico.values()){
                 if(c.toString()==jComboBox1.getSelectedItem().toString()){
-                    Cescolhido=c;
+                    Gescolhido=c;
                 }
             }
-            for(Semestre s : Semestre.values()){
-                if(s.toString()==jComboBox2.getSelectedItem().toString()){
-                    Sescolhido=s;
-                }
-            }
-            for(Ano a : Ano.values()){
-                if(a.toString()==jComboBox3.getSelectedItem().toString()){
-                    Aescolhido=a;
-                }
+            try{
+                nome=jTextField2.getText();
+                flag=1;
+            }catch(Exception e){
+                flag=0; 
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jTextField2.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
             }
             
-            Horario h=new Horario(dados,Cescolhido,Sescolhido,Aescolhido);
+            try{
+                idade = Integer.parseInt(jTextField3.getText());
+                flag=1;
+            }catch(Exception e){
+                flag=0; 
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jTextField3.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+             try{
+                if(flag==1){
+                Professor h=new Professor(dados,nome, idade, Gescolhido);
+                }
+            }catch(IllegalArgumentException e){
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Aviso", JOptionPane.ERROR_MESSAGE);
+            }
             frameInicial.setVisible(true);
             frame.dispose();
         }else{
             if(jComboBox1.getSelectedItem()==null){
                 JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jComboBox1.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
             }
-            if(jComboBox2.getSelectedItem()==null){
-                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jComboBox2.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            if(jTextField2.getText()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jTextField2.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
             }
-            if(jComboBox3.getSelectedItem()==null){
-                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jComboBox3.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            if(jTextField3.getText()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jTextField3.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
             }
-            
-        }
+    } 
+
     }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
