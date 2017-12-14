@@ -1,6 +1,5 @@
 package Dados;
 
-
 import Dados.Dados;
 
 public class Salas implements Comparable<Salas> {

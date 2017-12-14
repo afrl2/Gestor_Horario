@@ -16,8 +16,8 @@ public class CriarSala extends javax.swing.JPanel {
     public CriarSala(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
         for(Departamentos c :Departamentos.values()){
-            JcomboD.addItem(c.toString());
-            JcomboD.setSelectedItem(null);
+            jComboBox1.addItem(c.toString());
+            jComboBox1.setSelectedItem(null);
         }
         
         this.frameInicial=frameInicial;
@@ -97,6 +97,12 @@ public class CriarSala extends javax.swing.JPanel {
             }
         });
 
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,12 +137,15 @@ public class CriarSala extends javax.swing.JPanel {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(119, 119, 119)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                .addGap(31, 31, 31)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                        .addGap(31, 31, 31))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(118, 118, 118)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -158,19 +167,20 @@ public class CriarSala extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
             int numero;
-        if(JcomboD.getSelectedItem()!=null){
+        if(jComboBox1.getSelectedItem()!=null && jTextField3 !=null){
             Departamentos Descolhido=null;
-   
+            
             for(Departamentos c :Departamentos.values()){
-                if(c.toString()==JcomboD.getSelectedItem().toString()){
+                if(c.toString()==jComboBox1.getSelectedItem().toString()){
                     Descolhido=c;
                 }
             }
-
+            numero = Integer.parseInt(jTextField3.getText());
+            
             try{
-                Sala h=new Salas(dados,Descolhido,numero);
+                Salas h=new Salas(dados,Descolhido,numero);
             }catch(IllegalArgumentException e){
-                JOptionPane.showMessageDialog(null, "Mestrado nao apresenta opcao de 3 ano", "Mestrado", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Aviso", JOptionPane.ERROR_MESSAGE);
             }
             frameInicial.setVisible(true);
             frame.dispose();
@@ -178,15 +188,20 @@ public class CriarSala extends javax.swing.JPanel {
             if(jComboBox1.getSelectedItem()==null){
                 JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jComboBox1.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
             }
-          }
-            
-        }
+            if(jTextField3.getText()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jTextField3.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         frameInicial.setVisible(true);
         frame.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
