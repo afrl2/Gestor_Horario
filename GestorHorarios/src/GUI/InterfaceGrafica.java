@@ -354,8 +354,8 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         JFrame frame=new JFrame();
-        //JPanel p = new CriarAula(this,frame,d);
-        //frame.add(p);
+        JPanel p = new CriarAula(this,frame,d);
+        frame.add(p);
         frame.setSize(700, 600);
         frame.setVisible(true);
         this.setVisible(false);
@@ -364,8 +364,8 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         JFrame frame=new JFrame();
-        //JPanel p = new GerirAula(this,frame,d);
-        //frame.add(p);
+        JPanel p = new GerirAula(this,frame,d);
+        frame.add(p);
         frame.setSize(700, 600);
         frame.setVisible(true);
         this.setVisible(false);

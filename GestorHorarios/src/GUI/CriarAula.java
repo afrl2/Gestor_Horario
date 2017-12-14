@@ -5,18 +5,62 @@
  */
 package GUI;
 import Dados.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author User
  */
 public class CriarAula extends javax.swing.JPanel {
-
+    javax.swing.JFrame frameInicial;
+    javax.swing.JFrame frame;
+    Dados dados;
+    int hi,mi,hf,mf;
     /**
      * Creates new form CriarHorario
      */
-    public CriarAula() {
+    public CriarAula(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
-
+        
+        for(DiaSemana d : DiaSemana.values()){
+            dsemjComboBox1.addItem(d.toString());
+            dsemjComboBox1.setSelectedItem(null);
+        }
+        
+        List<Professor> profes=dados.getProfessores();
+        for(int i=0;i<profes.size();i++){
+            prof.addItem(profes.get(i).getNome() + " Grau: " + profes.get(i).getGrauAcadémico().name() + " Idade: " + profes.get(i).getIdade());
+            prof.setSelectedItem(null);
+        }
+        
+        List<Salas> salas=dados.getSalas();
+        for(int i=0;i<salas.size();i++){
+            sala.addItem(salas.get(i).getDepartamento().name()+ " " + salas.get(i).getNumero());
+            sala.setSelectedItem(null);
+        }
+        
+        List<Turma> turmas=dados.getTurmas();
+        for(int i=0;i<turmas.size();i++){
+            turma.addItem(turmas.get(i).getDisciplina() + " " + turmas.get(i).getTipoTurma().name() + " " + turmas.get(i).getNumero());
+            turma.setSelectedItem(null);
+        }
+        
+        
+        this.frameInicial=frameInicial;
+        this.frame=frame;
+        this.dados=dados;
+        
+        centreWindow(frame);   
+    }
+    
+    public static void centreWindow(Window frame) {
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+        frame.setLocation(x, y);
     }
 
     /**
@@ -44,12 +88,12 @@ public class CriarAula extends javax.swing.JPanel {
         turma = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        horini = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         prof = new javax.swing.JComboBox<>();
-        horfin = new javax.swing.JFormattedTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -98,12 +142,17 @@ public class CriarAula extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Hora inicial:");
 
-        dsemjComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         dsemjComboBox1.setSelectedIndex(-1);
+        dsemjComboBox1.setName("Dia da Semana"); // NOI18N
+        dsemjComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dsemjComboBox1ActionPerformed(evt);
+            }
+        });
 
-        sala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        sala.setName("Sala"); // NOI18N
 
-        turma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        turma.setName("Turma"); // NOI18N
 
         jButton1.setText("Criar Aula");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -116,11 +165,9 @@ public class CriarAula extends javax.swing.JPanel {
         jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jButton2.setDefaultCapable(false);
-
-        horini.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        horini.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                horiniActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -136,14 +183,11 @@ public class CriarAula extends javax.swing.JPanel {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Professor:");
 
-        prof.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        prof.setName("Professor"); // NOI18N
 
-        horfin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        horfin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                horfinActionPerformed(evt);
-            }
-        });
+        jTextField2.setName("Hora Inicial"); // NOI18N
+
+        jTextField3.setName("Hora Inicial"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -171,13 +215,12 @@ public class CriarAula extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(horfin, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(prof, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sala, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(dsemjComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(horini, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(turma, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dsemjComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(turma, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -193,12 +236,12 @@ public class CriarAula extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(horini, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(horfin, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(prof, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
@@ -232,25 +275,81 @@ public class CriarAula extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(dsemjComboBox1.getSelectedItem()!=null && prof.getSelectedItem()!=null && sala.getSelectedItem()!=null && turma.getSelectedItem()!=null && !jTextField2.getText().isEmpty() && !jTextField3.getText().isEmpty()){
+            DiaSemana Descolhido=null;
+            Professor Pescolhido=null;
+            Salas Sescolhido=null;
+            Turma Tescolhido=null;
+            
+            for(DiaSemana d : DiaSemana.values()){
+                if(d.toString()==dsemjComboBox1.getSelectedItem().toString()){
+                    Descolhido=d;
+                }
+            }   
+            Pescolhido=dados.getProfessores().get(prof.getSelectedIndex());
+            Sescolhido=dados.getSalas().get(sala.getSelectedIndex());
+            Tescolhido=dados.getTurmas().get(turma.getSelectedIndex());
+            
+            String inicial[]= jTextField2.getText().split(":", 2);
+            String finale[]= jTextField3.getText().split(":", 2);
+            
+            try{
+                try{
+                    hi=Integer.parseInt(inicial[0]);
+                    mi=Integer.parseInt(inicial[1]);
+                    hf=Integer.parseInt(finale[0]);
+                    mf=Integer.parseInt(finale[1]);
+                }catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "Horas em formato hh:mm - (Inteiros apenas)", "Horas", JOptionPane.ERROR_MESSAGE);
+                    frameInicial.setVisible(true);
+                    frame.dispose();
+                }
+                Aula a=new Aula(dados,hi,mi,hf,mf,Pescolhido,Sescolhido,Tescolhido,Descolhido);
+            }catch(IllegalArgumentException e){
+                JOptionPane.showMessageDialog(null, "Mestrado nao apresenta opcao de 3 ano", "Mestrado", JOptionPane.ERROR_MESSAGE);
+            }
+            frameInicial.setVisible(true);
+            frame.dispose();
+        }else{
+            if(dsemjComboBox1.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + dsemjComboBox1.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(prof.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + prof.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(sala.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + sala.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(turma.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + turma.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(jTextField2.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jTextField2.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(jTextField3.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jTextField3.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void horiniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horiniActionPerformed
+    private void dsemjComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dsemjComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_horiniActionPerformed
+    }//GEN-LAST:event_dsemjComboBox1ActionPerformed
 
-    private void horfinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horfinActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_horfinActionPerformed
+        frameInicial.setVisible(true);
+        frame.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> dsemjComboBox1;
-    private javax.swing.JFormattedTextField horfin;
-    private javax.swing.JFormattedTextField horini;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
@@ -267,6 +366,8 @@ public class CriarAula extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JComboBox<String> prof;
     private javax.swing.JComboBox<String> sala;
     private javax.swing.JComboBox<String> turma;

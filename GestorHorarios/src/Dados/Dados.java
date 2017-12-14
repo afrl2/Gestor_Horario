@@ -90,9 +90,9 @@ public class Dados {
         }
         
         resultado=(aula.getDia()
-                      +" "+aula.getHoraInicial()
-                      +" "+aula.getHoraFinal() +" "+aula.getProfessor()
-                      +" "+aula.getSala()+" "+aula.getTurma() );
+                      +" "+aula.getHoraInicialString()
+                      +" "+aula.getHoraFinalString() +" "+aula.getProfessor().getNome()
+                      +" "+aula.getSala().getNumero()+" "+aula.getTurma().getDisciplina() );
                 
         return resultado;
     }
