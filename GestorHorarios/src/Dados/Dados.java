@@ -78,6 +78,25 @@ public class Dados {
                 
         return resultado;
     }
+    
+        public String getAulasNome(Aula aula,int i){
+        int aux=0;
+        String resultado;
+        
+        for (int k=0;k<i;k++){
+            if (aula.compareTo(aulas.get(k))==1){
+                aux++;
+            }
+        }
+        
+        resultado=(aula.getDia()
+                      +" "+aula.getHoraInicial()
+                      +" "+aula.getHoraFinal() +" "+aula.getProfessor()
+                      +" "+aula.getSala()+" "+aula.getTurma() );
+                
+        return resultado;
+    }
+    
         public String getProfessoresNome(Professor prof){
         int aux=0;
         String resultado;
