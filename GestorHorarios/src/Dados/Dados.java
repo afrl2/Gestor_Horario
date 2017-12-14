@@ -79,6 +79,24 @@ public class Dados {
         return resultado;
     }
     
+        public String getTurmasNome(Turma turma,int i){
+        int aux=0;
+        String resultado;
+        
+        for (int k=0;k<i;k++){
+            if (turma.compareTo(turmas.get(k))==1){
+                aux++;
+            }
+        }
+        
+        resultado=(turma.getNumero()
+                      +" "+turma.getDisciplina()
+                      +" "+turma.getTipoTurma() + " - "
+                      );
+                
+        return resultado;
+    }
+    
     public String getSalasNome(Salas sala){
         
         String resultado;
