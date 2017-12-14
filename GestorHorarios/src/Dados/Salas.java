@@ -13,29 +13,29 @@ public class Salas implements Comparable<Salas> {
        
         this.dados=dados;
         
-        if(departamento!=null){
+        if (departamento!=null){
              this.departamento=departamento;
-        }else{
+        } else {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Disciplina");
         }
         
-        if(numero>0){
+        if (numero>0){
             this.numero=numero;
-        }else{
+        } else {
             throw new IllegalArgumentException("Formatação errada"
                     + " no campo Número");
         }
         
         int flag=0;
         
-        for(int i=0;i<dados.getSalas().size();i++){
-            if(dados.getSalas().get(i).compareTo(this)==1){
+        for (int i=0;i<dados.getSalas().size();i++){
+            if (dados.getSalas().get(i).compareTo(this)==1){
                 flag=1;
             }
         }
         
-        if(flag!=1){
+        if (flag!=1){
             dados.getSalas().add(this); 
         }
               
@@ -57,7 +57,6 @@ public class Salas implements Comparable<Salas> {
         this.numero = numero;
     }
 
-    
     @Override
     public int compareTo(Salas o) {
         
@@ -74,11 +73,11 @@ public class Salas implements Comparable<Salas> {
     
     public void removeSalas(){
         
-        if(dados.getSalas().remove(this)){
+        if (dados.getSalas().remove(this)){
             
-            for(int i=0;i<dados.getAulas().size();i++){
+            for (int i=0;i<dados.getAulas().size();i++){
                 
-                if(dados.getAulas().get(i).getSala().compareTo(this)==1){
+                if (dados.getAulas().get(i).getSala().compareTo(this)==1){
                     dados.getAulas().remove(i);
                 }            
             }            
@@ -87,15 +86,12 @@ public class Salas implements Comparable<Salas> {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof Salas))
+        if (!(obj instanceof Salas))
             return false;
         
-        if(((Salas)obj).getDepartamento()==this.getDepartamento() && ((Salas)obj).getNumero()==this.getNumero())
+        if (((Salas)obj).getDepartamento()==this.getDepartamento() && ((Salas)obj).getNumero()==this.getNumero())
             return true;
         return false;
             
     }
-    
-    
-    
 }

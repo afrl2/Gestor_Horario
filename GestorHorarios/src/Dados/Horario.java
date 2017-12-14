@@ -1,6 +1,5 @@
 package Dados;
 
-
 import Dados.Aula;
 import Dados.Dados;
 import java.util.ArrayList;
@@ -36,13 +35,13 @@ public class Horario implements Comparable<Horario>{
 
         if (ano != null) {
             if (flag){
-                if(ano!=Ano.ano3){
+                if (ano!=Ano.ano3){
                     this.ano= ano;
-                }else{
+                } else {
                     throw new IllegalArgumentException("Formatação errada"
                     + " no campo Ano");
                 }
-            }else{
+            } else {
                 this.ano=ano;
             }
             
@@ -91,16 +90,16 @@ public class Horario implements Comparable<Horario>{
       
         int flag_comp=0;
         
-        for(int i=0;i<aulas.size();i++){
-            if(aula.compareTo(aulas.get(i))==1
+        for (int i=0;i<aulas.size();i++){
+            if (aula.compareTo(aulas.get(i))==1
                     ||aula.VerificarHora(aulas.get(i))==1)
             flag_comp=1;
         }
         
-        if(flag_comp==0){
+        if (flag_comp==0){
             aulas.add(aula);
             return true;
-        }else{
+        } else {
             return false;
         }
         
@@ -124,7 +123,7 @@ public class Horario implements Comparable<Horario>{
                 && this.curso == o.curso 
                 && this.semestre == o.semestre){
             return 1;//turmas como tudo igual menos aulas;
-        }else{
+        } else {
             return 0;
         }     
     }
