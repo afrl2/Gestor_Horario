@@ -7,6 +7,7 @@ package GUI;
 
 import Dados.Dados;
 import Dados.Horario;
+import Dados.Aula;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.Window;
@@ -18,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author afrl1
  */
-public class GerirHorario extends javax.swing.JPanel implements ItemListener {
+public class MostrarHorario extends javax.swing.JPanel implements ItemListener {
     javax.swing.JFrame frameInicial;
     javax.swing.JFrame frame;
     Dados dados;
@@ -26,7 +27,7 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
     /**
      * Creates new form GerirHorario
      */
-    public GerirHorario(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
+    public MostrarHorario(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
         
         List<Horario> listaH=dados.getHorarios();
@@ -51,10 +52,12 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
             jTextField4.setText(listaH.get(selection).getSemestre().toString());
             jTextField2.setText(listaH.get(selection).getAno().toString());
             List<Aula> listA=listaH.get(selection).getAulas();
-        for(int i=0;i<listaH.size();i++){
-            jComboBox2.addItem(dados.getAulasNome(listaA.get(i),i+1));
-            jComboBox2.setSelectedItem(null);
-        }  
+            if(!listA.isEmpty()){
+                for(int i=0;i<listaH.size();i++){
+                    jComboBox2.addItem(dados.getAulasNome(listA.get(i),i+1));
+                }  
+            }
+        jComboBox2.setSelectedItem(null);
         }
     }
     
