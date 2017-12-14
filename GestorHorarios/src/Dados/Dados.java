@@ -78,7 +78,18 @@ public class Dados {
                 
         return resultado;
     }
-    
+        public String getProfessoresNome(Professor prof){
+        int aux=0;
+        String resultado;
+        
+        
+        resultado=(prof.getNome()
+                      +" "+prof.getIdade()
+                      +" "+prof.getGrauAcadémico() + " - "
+                     );
+                
+        return resultado;
+    }
         public String getTurmasNome(Turma turma,int i){
         int aux=0;
         String resultado;
