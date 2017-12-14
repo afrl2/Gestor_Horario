@@ -21,11 +21,12 @@ public class AdionarAula extends javax.swing.JPanel {
      */
     public AdionarAula(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
-       List<Horario> listaH=dados.getHorariosNome(frame, WIDTH);
+       List<Horario> listaH=dados.getHorarios();
         for(int i=0;i<listaH.size();i++){
-            jComboBox1.addItem(dados.getSalasNome(listaH.get(i)));
+            jComboBox1.addItem(dados.getHorariosNome(listaH.get(i),i+1));
             jComboBox1.setSelectedItem(null);
         }  
+
 
 
         this.frameInicial=frameInicial;
