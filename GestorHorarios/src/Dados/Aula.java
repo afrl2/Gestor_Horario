@@ -112,6 +112,10 @@ public class Aula implements Comparable<Aula>{
     public Hora getHoraInicial() {
         return hora_inicial;
     }
+    
+    public String getHoraInicialString(){
+        return hora_inicial.getHora() + ":" + hora_inicial.getMinuto();
+    }
 
     public void setHoraInicial(Hora hora_inicial) {
         if (hora_inicial.getHora()<25 && hora_inicial.getHora()>0 
@@ -125,6 +129,10 @@ public class Aula implements Comparable<Aula>{
 
     public Hora getHoraFinal() {
         return hora_final;
+    }
+    
+    public String getHoraFinalString(){
+        return hora_final.getHora() + ":" + hora_final.getMinuto();
     }
 
     public void setHoraFinal(Hora hora_final) {
