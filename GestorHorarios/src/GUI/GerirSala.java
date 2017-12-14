@@ -96,8 +96,8 @@ javax.swing.JFrame frameInicial;
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Sala:   ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setSelectedIndex(-1);
+        jComboBox1.setName("Sala"); // NOI18N
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -167,9 +167,9 @@ javax.swing.JFrame frameInicial;
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, 0, 210, Short.MAX_VALUE)
+                    .addComponent(jTextField4)
+                    .addComponent(jTextField3))
                 .addGap(119, 119, 119))
         );
         layout.setVerticalGroup(
@@ -220,6 +220,8 @@ javax.swing.JFrame frameInicial;
         if(jComboBox1.getItemCount()>0 && jComboBox1.getSelectedIndex()!=-1){
             List<Salas> listaH=dados.getSalas();
             listaH.remove(jComboBox1.getSelectedIndex());
+            frameInicial.setVisible(true);
+            frame.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Nao existem salas para remover",
                 "Remover salas", JOptionPane.ERROR_MESSAGE);
