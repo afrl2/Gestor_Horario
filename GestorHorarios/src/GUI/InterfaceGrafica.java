@@ -360,8 +360,8 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         JFrame frame=new JFrame();
-        //JPanel p = new GerirTurma(this,frame,d);
-        //frame.add(p);
+        JPanel p = new GerirTurma(this,frame,d);
+        frame.add(p);
         frame.setSize(700, 600);
         frame.setVisible(true);
         this.setVisible(false);

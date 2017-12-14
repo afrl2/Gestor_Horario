@@ -24,7 +24,7 @@ public class GerirTurma extends javax.swing.JPanel implements ItemListener {
     Dados dados;
     int selection;
     /**
-     * Creates new form GerirHorario
+     * Creates new form GerirTurma
      */
     public GerirTurma(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
