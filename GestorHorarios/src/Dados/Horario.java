@@ -110,6 +110,12 @@ public class Horario implements Comparable<Horario>{
         return aulas.remove(aula);
         
     }
+    public Boolean removeAula(int i){
+        
+        return aulas.remove(aulas.get(i));
+        
+    }
+    
         
     public Boolean ApagarHorario(){
         
@@ -119,6 +125,7 @@ public class Horario implements Comparable<Horario>{
     
     @Override
     public int compareTo(Horario o) {
+        
         if (this.ano == o.ano 
                 && this.curso == o.curso 
                 && this.semestre == o.semestre){
