@@ -101,7 +101,8 @@ public class Horario implements Comparable<Horario>, Serializable{
             aulas.add(aula);
             return true;
         } else {
-            return false;
+            throw new RuntimeException("ja existe uma aula dentro do intervalo "
+                    + "horario pretendido"); 
         }
         
     }
