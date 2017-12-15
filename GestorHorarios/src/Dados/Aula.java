@@ -220,4 +220,14 @@ public class Aula implements Comparable<Aula>{
        return dados.getAulas().remove(this);    
     }
 
+    public String getAulaNome(){
+        String resultado;
+ 
+        resultado=(this.getDia()
+                      +" "+this.getHoraInicialString()
+                      +" "+this.getHoraFinalString() +" "+this.getProfessor().getNome()
+                      +" "+this.getSala().getNumero()+" "+this.getTurma().getDisciplina() );
+                
+        return resultado;
+    }
 }
