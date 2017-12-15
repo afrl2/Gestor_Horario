@@ -505,7 +505,6 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-<<<<<<< HEAD
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         JFrame frame=new JFrame();
@@ -517,8 +516,6 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
 
-=======
->>>>>>> parent of 01e67d6... carregar
     /**
      * @param args the command line arguments
      */
