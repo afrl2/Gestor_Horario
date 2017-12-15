@@ -68,6 +68,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -320,6 +321,14 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem3);
 
+        jMenuItem4.setText("Carregar Dados");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Editar");
@@ -494,6 +503,16 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        JFrame frame=new JFrame();
+        JPanel p = new CarregarFicheiro(d,frame);
+        frame.add(p);
+        frame.setSize(750, 600);
+        frame.setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -553,6 +572,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
