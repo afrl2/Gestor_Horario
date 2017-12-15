@@ -25,6 +25,15 @@ public class Dados implements Serializable {
         public List<Horario> getHorarios() {
         return horarios;
     }
+        
+    public void setDados(Dados dados){
+        this.horarios=dados.getHorarios();
+        this.turmas=dados.getTurmas();
+        this.salas=dados.getSalas();
+        this.aulas=dados.getAulas();
+        this.professores=dados.getProfessores();
+        
+    }
 
     public void setHorarios(List<Horario> horarios) {
         this.horarios = horarios;
