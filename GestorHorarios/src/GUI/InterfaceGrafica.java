@@ -491,6 +491,10 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton14ActionPerformed
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of f37d4e7... Revert "fix"
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
         JFrame frame=new JFrame();
@@ -501,11 +505,34 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton15ActionPerformed
+<<<<<<< HEAD
 =======
         frame.setSize(750, 600);
         frame.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 >>>>>>> parent of 13f4026... Merge branch 'Afrl'
+=======
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        JFrame frame=new JFrame();
+        JPanel p = new GuardarFicheiro(d,frame);
+        frame.add(p);
+        frame.setSize(750, 600);
+        frame.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        JFrame frame=new JFrame();
+        JPanel p = new CarregarFicheiro(d,frame);
+        frame.add(p);
+        frame.setSize(750, 600);
+        frame.setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+>>>>>>> parent of f37d4e7... Revert "fix"
 
     /**
      * @param args the command line arguments
