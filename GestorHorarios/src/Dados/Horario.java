@@ -123,6 +123,55 @@ public class Horario implements Comparable<Horario>, Serializable{
         
     }
     
+    public Aula[][] SortHorario(){
+        Aula a [][] =new Aula[7][getAulas().size()];
+        int aux=0;
+        
+        for (int i = 0; i < getAulas().size(); i++) {
+            if(getAulas().get(i).getDia()==DiaSemana.segunda){
+                a[0][aux++]=getAulas().get(i);
+            }  
+        }
+        aux=0;
+        for (int i = 0; i < getAulas().size(); i++) {
+            if(getAulas().get(i).getDia()==DiaSemana.terca){
+                a[1][aux++]=getAulas().get(i);
+            }  
+        }
+        aux=0;
+        for (int i = 0; i < getAulas().size(); i++) {
+            if(getAulas().get(i).getDia()==DiaSemana.quarta){
+                a[2][aux++]=getAulas().get(i);
+            }  
+        }
+        aux=0;
+        for (int i = 0; i < getAulas().size(); i++) {
+            if(getAulas().get(i).getDia()==DiaSemana.quinta){
+                a[3][aux++]=getAulas().get(i);
+            }  
+        }
+        aux=0;
+        for (int i = 0; i < getAulas().size(); i++) {
+            if(getAulas().get(i).getDia()==DiaSemana.sexta){
+                a[4][aux++]=getAulas().get(i);
+            }  
+        }
+        aux=0;
+        for (int i = 0; i < getAulas().size(); i++) {
+            if(getAulas().get(i).getDia()==DiaSemana.sabado){
+                a[5][aux++]=getAulas().get(i);
+            }  
+        }
+        aux=0;
+        for (int i = 0; i < getAulas().size(); i++) {
+            if(getAulas().get(i).getDia()==DiaSemana.domingo){
+                a[6][aux++]=getAulas().get(i);
+            }  
+        }
+        aux=0;
+        return a;
+    }
+    
     @Override
     public int compareTo(Horario o) {
         

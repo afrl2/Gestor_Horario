@@ -353,10 +353,16 @@ public class CriarAula extends javax.swing.JPanel {
             
             try{
                 try{
-                    hi=Integer.parseInt(inicial[0]);
-                    mi=Integer.parseInt(inicial[1]);
-                    hf=Integer.parseInt(finale[0]);
-                    mf=Integer.parseInt(finale[1]);
+                    if(inicial.length!=2 || finale.length!=2){
+                        JOptionPane.showMessageDialog(null, "Horas em formato hh:mm - (Inteiros apenas)", "Horas", JOptionPane.ERROR_MESSAGE);
+                        throw new NumberFormatException();
+                    }else{
+                        hi=Integer.parseInt(inicial[0]);
+                        mi=Integer.parseInt(inicial[1]);
+                        hf=Integer.parseInt(finale[0]);
+                        mf=Integer.parseInt(finale[1]);
+                    }
+                    
                 }catch(NumberFormatException e){
                     JOptionPane.showMessageDialog(null, "Horas em formato hh:mm - (Inteiros apenas)", "Horas", JOptionPane.ERROR_MESSAGE);
                     frameInicial.setVisible(true);
@@ -364,7 +370,7 @@ public class CriarAula extends javax.swing.JPanel {
                 }
                 Aula a=new Aula(dados,hi,mi,hf,mf,Pescolhido,Sescolhido,Tescolhido,Descolhido);
             }catch(IllegalArgumentException e){
-                JOptionPane.showMessageDialog(null, "Mestrado nao apresenta opcao de 3 ano", "Mestrado", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Formatacao errada num dos campos", "Formatacao Errada", JOptionPane.ERROR_MESSAGE);
             }
             frameInicial.setVisible(true);
             frame.dispose();

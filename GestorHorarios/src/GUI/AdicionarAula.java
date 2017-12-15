@@ -31,7 +31,7 @@ public class AdicionarAula extends javax.swing.JPanel {
             }  
         List<Aula> listaJ=dados.getAulas();
             for(int i=0;i<listaJ.size();i++){
-                jComboBox2.addItem(dados.getAulasNome(listaJ.get(i),i+1));
+                jComboBox2.addItem(dados.getAulasNome(listaJ.get(i)));
                 jComboBox2.setSelectedItem(null);
             }  
         //jComboBox1.addItemListener(this);

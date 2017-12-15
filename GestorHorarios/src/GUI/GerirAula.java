@@ -13,7 +13,9 @@ import java.awt.Window;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 /**
  *
  * @author afrl1
@@ -31,7 +33,7 @@ public class GerirAula extends javax.swing.JPanel implements ItemListener {
         
         List<Aula> listaH=dados.getAulas();
         for(int i=0;i<listaH.size();i++){
-            jComboBox1.addItem(dados.getAulasNome(listaH.get(i),i+1));
+            jComboBox1.addItem(dados.getAulasNome(listaH.get(i)));
             jComboBox1.setSelectedItem(null);
         }  
         jComboBox1.addItemListener(this);
@@ -141,7 +143,12 @@ public class GerirAula extends javax.swing.JPanel implements ItemListener {
             }
         });
 
-        jButton2.setText("ModificarAula");
+        jButton2.setText("Modificar Aula");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/undo.png"))); // NOI18N
         jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -284,6 +291,15 @@ public class GerirAula extends javax.swing.JPanel implements ItemListener {
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        JFrame frame_1=new JFrame();
+        JPanel p = new ModificarAula(frame,frame_1,dados);
+        frame_1.add(p);
+        frame_1.setSize(700, 600);
+        frame_1.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

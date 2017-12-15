@@ -88,15 +88,8 @@ public class Dados implements Serializable{
         return resultado;
     }
     
-        public String getAulasNome(Aula aula,int i){
-        int aux=0;
+        public String getAulasNome(Aula aula){ 
         String resultado;
-        
-        for (int k=0;k<i;k++){
-            if (aula.compareTo(aulas.get(k))==1){
-                aux++;
-            }
-        }
         
         resultado=(aula.getDia()
                       +" "+aula.getHoraInicialString()
