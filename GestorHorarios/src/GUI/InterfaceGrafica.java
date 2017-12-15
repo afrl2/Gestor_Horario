@@ -67,6 +67,10 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+<<<<<<< HEAD
+=======
+        jMenuItem3 = new javax.swing.JMenuItem();
+>>>>>>> parent of 13f4026... Merge branch 'Afrl'
         jMenu2 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -310,6 +314,18 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         jTextField1.setToolTipText("");
 
         jMenu1.setText("Ficheiro");
+<<<<<<< HEAD
+=======
+
+        jMenuItem3.setText("Guardar Dados");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+>>>>>>> parent of 13f4026... Merge branch 'Afrl'
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Editar");
@@ -480,10 +496,16 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         JFrame frame=new JFrame();
         JPanel p = new ModificarTurma(this,frame,d);
         frame.add(p);
+<<<<<<< HEAD
         frame.setSize(700, 600);
         frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton15ActionPerformed
+=======
+        frame.setSize(750, 600);
+        frame.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+>>>>>>> parent of 13f4026... Merge branch 'Afrl'
 
     /**
      * @param args the command line arguments
@@ -543,6 +565,10 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+<<<<<<< HEAD
+=======
+    private javax.swing.JMenuItem jMenuItem3;
+>>>>>>> parent of 13f4026... Merge branch 'Afrl'
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

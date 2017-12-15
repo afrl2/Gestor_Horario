@@ -23,6 +23,19 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ficheiro"/>
           </Properties>
+<<<<<<< HEAD
+=======
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Guardar Dados"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+>>>>>>> parent of 13f4026... Merge branch 'Afrl'
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
