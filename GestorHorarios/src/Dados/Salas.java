@@ -1,8 +1,9 @@
 package Dados;
 
 import Dados.Dados;
+import java.io.Serializable;
 
-public class Salas implements Comparable<Salas> {
+public class Salas implements Comparable<Salas>, Serializable {
     
     private Departamentos departamento;
     private int numero;

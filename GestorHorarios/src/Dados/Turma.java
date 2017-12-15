@@ -1,8 +1,9 @@
 package Dados;
 
 import Dados.Dados;
+import java.io.Serializable;
 
-public class Turma implements Comparable<Turma> {
+public class Turma implements Comparable<Turma>,Serializable {
     
     private int numero;
     private String disciplina;
