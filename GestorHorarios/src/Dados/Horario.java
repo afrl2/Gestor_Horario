@@ -116,7 +116,6 @@ public class Horario implements Comparable<Horario>{
         
     }
     
-        
     public Boolean ApagarHorario(){
         
         return dados.getHorarios().remove(this);

@@ -194,7 +194,7 @@ public class AdicionarAula extends javax.swing.JPanel {
             frameInicial.setVisible(true);
             frame.dispose();
         }else{
-            JOptionPane.showMessageDialog(null, "Nao foi selecionado nenhum horário", "Alerta", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nao foi selecionado nenhum Horário ou Aula", "Alerta", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
