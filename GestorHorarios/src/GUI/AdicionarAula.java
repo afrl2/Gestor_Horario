@@ -9,18 +9,20 @@ import Dados.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.Window;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 
-public class AdionarAula extends javax.swing.JPanel {
+public class AdicionarAula extends javax.swing.JPanel {
     javax.swing.JFrame frameInicial;
     javax.swing.JFrame frame;
     Dados dados;
     /**
      * Creates new form AdionarAula
      */
-    public AdionarAula(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
+    public AdicionarAula(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
          List<Horario> listaH=dados.getHorarios();
             for(int i=0;i<listaH.size();i++){
@@ -29,11 +31,11 @@ public class AdionarAula extends javax.swing.JPanel {
             }  
         List<Aula> listaJ=dados.getAulas();
             for(int i=0;i<listaJ.size();i++){
-                jComboBox1.addItem(dados.getAulasNome(listaJ.get(i),i+1));
-                jComboBox1.setSelectedItem(null);
+                jComboBox2.addItem(dados.getAulasNome(listaJ.get(i),i+1));
+                jComboBox2.setSelectedItem(null);
             }  
-        jComboBox1.addItemListener(this);
-        jComboBox2.addItemListener(this);
+        //jComboBox1.addItemListener(this);
+        //jComboBox2.addItemListener(this);
 
 
         this.frameInicial=frameInicial;

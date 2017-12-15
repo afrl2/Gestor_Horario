@@ -434,8 +434,8 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
         JFrame frame=new JFrame();
-        //JPanel p = new AdicionarAula(this,frame,d);
-        //frame.add(p);
+        JPanel p = new AdicionarAula(this,frame,d);
+        frame.add(p);
         frame.setSize(700, 600);
         frame.setVisible(true);
         this.setVisible(false);
