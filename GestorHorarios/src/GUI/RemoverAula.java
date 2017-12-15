@@ -12,6 +12,7 @@ import java.awt.Window;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -197,13 +198,12 @@ public class RemoverAula extends javax.swing.JPanel implements ItemListener{
         if(jComboBox1.getItemCount()>0 && jComboBox1.getSelectedIndex()!=-1&&jComboBox2.getItemCount()>0 && jComboBox2.getSelectedIndex()!=-1){
             List<Horario> listaH=dados.getHorarios();
             List<Aula> listaJ=dados.getAulas();
-            listaH.get(jComboBox1.getSelectedIndex()).removeAula(listaH.get
-                    removelistaJ.get(jComboBox2.getSelectedIndex()));
+            listaH.get(jComboBox1.getSelectedIndex()).removeAula(jComboBox2.getSelectedIndex());
 
             frameInicial.setVisible(true);
             frame.dispose();
         }else{
-            JOptionPane.showMessageDialog(null, "", "Alerta", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nao foi selecionado nenhum Horário ou Aula", "Alerta", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
