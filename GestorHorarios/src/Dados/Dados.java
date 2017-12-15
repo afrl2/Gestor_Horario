@@ -1,9 +1,10 @@
 package Dados;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dados {
+public class Dados implements Serializable{
    
     List <Horario> horarios;
     List <Turma> turmas;
@@ -23,6 +24,14 @@ public class Dados {
     
         public List<Horario> getHorarios() {
         return horarios;
+    }
+        
+    public void setDados(Dados dados){
+     this.horarios=dados.getHorarios();
+     this.turmas=dados.getTurmas();
+     this.salas=dados.getSalas();
+     this.aulas=dados.getAulas();
+     this.professores=dados.getProfessores();
     }
 
     public void setHorarios(List<Horario> horarios) {

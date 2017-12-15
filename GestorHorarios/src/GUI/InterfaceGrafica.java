@@ -24,6 +24,16 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         initComponents();
         centreWindow(this);
         d=new Dados();
+        
+        int reply = JOptionPane.showConfirmDialog(null, "Pretende carregar ficheiro com dados da ultima sessao?","Carregar Ficheiros", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+          JFrame frame=new JFrame();
+            JPanel p = new CarregarFicheiro(d,frame);
+            frame.add(p);
+            frame.setSize(750, 600);
+            frame.setVisible(true);
+        }
+        
     }
     
     public static void centreWindow(Window frame) {

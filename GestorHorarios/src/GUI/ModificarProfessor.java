@@ -8,7 +8,6 @@ package GUI;
 import Dados.Dados;
 import Dados.GrauAcadémico;
 import Dados.Professor;
-import static GUI.ModificarHorario.centreWindow;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.Window;
@@ -34,16 +33,16 @@ public class ModificarProfessor extends javax.swing.JPanel implements ItemListen
         
          List<Professor> listaH=dados.getProfessores();
         for(int i=0;i<listaH.size();i++){
-            jComboBox1.addItem(dados.getProfessoresNome(listaH.get(i)));
-            jComboBox1.setSelectedItem(null);
+            jComboBox2.addItem(dados.getProfessoresNome(listaH.get(i)));
+            jComboBox2.setSelectedItem(null);
         }  
         
         for(GrauAcadémico c : GrauAcadémico.values()){
-            jComboBox2.addItem(c.toString());
-            jComboBox2.setSelectedItem(null);
+            jComboBox1.addItem(c.toString());
+            jComboBox1.setSelectedItem(null);
         }
         
-        jComboBox1.addItemListener(this);
+        jComboBox2.addItemListener(this);
 
         this.frameInicial=frameInicial;
         this.frame=frame;
@@ -97,6 +96,11 @@ public class ModificarProfessor extends javax.swing.JPanel implements ItemListen
         jTextField3.setName("Idade"); // NOI18N
 
         jComboBox1.setName("Grau académico"); // NOI18N
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -236,7 +240,7 @@ public class ModificarProfessor extends javax.swing.JPanel implements ItemListen
             int idade=0;
             int flag=0;
             List<Professor> listaH=dados.getProfessores();
-        if(jComboBox1.getSelectedItem()!=null && jTextField3 !=null){
+        if(jComboBox2.getSelectedItem()!=null && jTextField3 !=null){
             GrauAcadémico Gescolhido=null;
             
             for(GrauAcadémico c : GrauAcadémico.values()){
@@ -298,6 +302,10 @@ public class ModificarProfessor extends javax.swing.JPanel implements ItemListen
         frameInicial.setVisible(true);
         frame.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,6 +1,8 @@
 package Dados;
 
-class Hora implements Comparable<Hora>{
+import java.io.Serializable;
+
+class Hora implements Comparable<Hora>, Serializable{
     private int hora;
     private int minuto; 
 
