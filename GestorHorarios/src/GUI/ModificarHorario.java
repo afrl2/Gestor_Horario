@@ -32,11 +32,25 @@ public class ModificarHorario extends javax.swing.JPanel implements ItemListener
      */
     public ModificarHorario(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
+        
         List<Horario> listaH=dados.getHorarios();
         for(int i=0;i<listaH.size();i++){
             jComboBox1.addItem(dados.getHorariosNome(listaH.get(i),i+1));
             jComboBox1.setSelectedItem(null);
         }  
+        
+        for(Curso c : Curso.values()){
+            jComboBox3.addItem(c.toString());
+            jComboBox3.setSelectedItem(null);
+        }
+        for(Semestre s: Semestre.values()){
+            jComboBox2.addItem(s.toString());
+            jComboBox2.setSelectedItem(null);
+        }
+        for(Ano a:Ano.values()){
+            jComboBox4.addItem(a.toString());
+            jComboBox4.setSelectedItem(null);
+        }
         jComboBox1.addItemListener(this);
         
         this.frameInicial=frameInicial;
@@ -50,9 +64,7 @@ public class ModificarHorario extends javax.swing.JPanel implements ItemListener
         if ((e.getStateChange() == ItemEvent.SELECTED)) {
             List<Horario> listaH=dados.getHorarios();
             int selection = jComboBox1.getSelectedIndex();
-            jTextField3.setText(listaH.get(selection).getCurso().toString());
-            jTextField4.setText(listaH.get(selection).getSemestre().toString());
-            jTextField2.setText(listaH.get(selection).getAno().toString());
+            
         }
     }
     
@@ -77,13 +89,13 @@ public class ModificarHorario extends javax.swing.JPanel implements ItemListener
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(141, 141, 157));
@@ -113,19 +125,13 @@ public class ModificarHorario extends javax.swing.JPanel implements ItemListener
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Curso:   ");
 
-        jTextField3.setFocusable(false);
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Semestre:   ");
 
-        jTextField4.setFocusable(false);
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Ano:   ");
-
-        jTextField2.setFocusable(false);
 
         jButton2.setText("Modificar Horário");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +147,20 @@ public class ModificarHorario extends javax.swing.JPanel implements ItemListener
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setName("Semestre"); // NOI18N
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
+        jComboBox4.setName("Ano"); // NOI18N
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
             }
         });
 
@@ -160,13 +180,13 @@ public class ModificarHorario extends javax.swing.JPanel implements ItemListener
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 94, Short.MAX_VALUE))
+                            .addComponent(jComboBox1, 0, 383, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, 383, Short.MAX_VALUE)
+                            .addComponent(jComboBox4, 0, 383, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(325, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(163, 163, 163)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -189,19 +209,19 @@ public class ModificarHorario extends javax.swing.JPanel implements ItemListener
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(9, 9, 9)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(145, 145, 145)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 391, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -223,18 +243,31 @@ public class ModificarHorario extends javax.swing.JPanel implements ItemListener
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(jComboBox1.getSelectedItem()!=null){
+        if(jComboBox1.getSelectedItem()!=null && jComboBox2.getSelectedItem()!=null && jComboBox3.getSelectedItem()!=null && jComboBox4.getSelectedItem()!=null){
             Curso Cescolhido=null;
             Semestre Sescolhido=null;
             Ano Aescolhido=null;
             
+            for(Curso c : Curso.values()){
+                if(c.toString()==jComboBox3.getSelectedItem().toString()){
+                    Cescolhido=c;
+                }
+            }
+            for(Semestre s : Semestre.values()){
+                if(s.toString()==jComboBox2.getSelectedItem().toString()){
+                    Sescolhido=s;
+                }
+            }
+            for(Ano a : Ano.values()){
+                if(a.toString()==jComboBox4.getSelectedItem().toString()){
+                    Aescolhido=a;
+                }
+            }
+            
             List<Horario> listaH=dados.getHorarios();
-            Cescolhido=listaH.get(selection).getCurso();
-            Sescolhido=listaH.get(selection).getSemestre();
-            Aescolhido=listaH.get(selection).getAno();
             
             try{
-                Horario h=new Horario(dados,Cescolhido,Sescolhido,Aescolhido);
+                //Horario h=new Horario(dados,Cescolhido,Sescolhido,Aescolhido);
                 listaH.get(selection).setCurso(Cescolhido);
                 listaH.get(selection).setSemestre(Sescolhido);
                 listaH.get(selection).setAno(Aescolhido);
@@ -252,18 +285,26 @@ public class ModificarHorario extends javax.swing.JPanel implements ItemListener
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

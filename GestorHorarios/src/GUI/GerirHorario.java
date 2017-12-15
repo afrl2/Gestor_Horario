@@ -252,10 +252,9 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
         // TODO add your handling code here:
         JFrame frame_1=new JFrame();
         JPanel p = new ModificarHorario(frame,frame_1,dados);
-        frame.add(p);
-        frame.setSize(700, 600);
-        frame.setVisible(true);
-        this.setVisible(false);
+        frame_1.add(p);
+        frame_1.setSize(700, 600);
+        frame_1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
