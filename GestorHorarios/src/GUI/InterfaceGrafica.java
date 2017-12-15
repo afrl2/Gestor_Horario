@@ -10,6 +10,8 @@ import Dados.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.Window;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -23,6 +25,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     public InterfaceGrafica() {
         initComponents();
         centreWindow(this);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         d=new Dados();
         
         int reply = JOptionPane.showConfirmDialog(null, "Pretende carregar ficheiro com dados da ultima sessao?","Carregar Ficheiros", JOptionPane.YES_NO_OPTION);
@@ -34,6 +37,27 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             frame.setVisible(true);
         }
         
+        this.addWindowListener(new WindowAdapter(){
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int reply = JOptionPane.showConfirmDialog(null, "Pretende guardar dados num ficheiro?","Guardar Ficheiros", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                  JFrame frame=new JFrame();
+                    JPanel p = new GuardarFicheiro(d,frame);
+                    frame.add(p);
+                    frame.setSize(750, 600);
+                    frame.setVisible(true);
+                }
+                e.getWindow().dispose();
+            }
+        });
+        
+    }
+
+    @Override
+    public void dispose() {
+        
+        super.dispose(); //To change body of generated methods, choose Tools | Templates.
     }
     
     public static void centreWindow(Window frame) {
