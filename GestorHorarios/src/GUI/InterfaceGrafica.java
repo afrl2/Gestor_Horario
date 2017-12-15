@@ -509,7 +509,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton14ActionPerformed
 
-<<<<<<< HEAD
+
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
         JFrame frame=new JFrame();
@@ -519,7 +519,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton15ActionPerformed
-=======
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
         JFrame frame=new JFrame();
@@ -538,7 +538,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         frame.setVisible(true);
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
->>>>>>> 13f4026e5d61900e62d6882f7bf31b888e830235
+
 
     /**
      * @param args the command line arguments
