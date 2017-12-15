@@ -1,9 +1,10 @@
 package Dados;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dados {
+public class Dados implements Serializable {
    
     List <Horario> horarios;
     List <Turma> turmas;

@@ -2,10 +2,11 @@ package Dados;
 
 import Dados.Aula;
 import Dados.Dados;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Horario implements Comparable<Horario>{
+public class Horario implements Comparable<Horario>, Serializable{
 
     private List<Aula> aulas;
     private Curso curso;

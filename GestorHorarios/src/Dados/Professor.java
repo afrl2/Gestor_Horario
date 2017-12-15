@@ -1,8 +1,9 @@
 package Dados;
 
 import Dados.Dados;
+import java.io.Serializable;
 
-public class Professor {
+public class Professor implements Serializable{
     private String nome;
     private int idade;
     private GrauAcadémico grau_Académico;
