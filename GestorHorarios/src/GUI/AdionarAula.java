@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 public class AdionarAula extends javax.swing.JPanel {
@@ -21,12 +22,18 @@ public class AdionarAula extends javax.swing.JPanel {
      */
     public AdionarAula(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
         initComponents();
-       List<Horario> listaH=dados.getHorarios();
-        for(int i=0;i<listaH.size();i++){
-            jComboBox1.addItem(dados.getHorariosNome(listaH.get(i),i+1));
-            jComboBox1.setSelectedItem(null);
-        }  
-
+         List<Horario> listaH=dados.getHorarios();
+            for(int i=0;i<listaH.size();i++){
+                jComboBox1.addItem(dados.getHorariosNome(listaH.get(i),i+1));
+                jComboBox1.setSelectedItem(null);
+            }  
+        List<Aula> listaJ=dados.getAulas();
+            for(int i=0;i<listaJ.size();i++){
+                jComboBox1.addItem(dados.getAulasNome(listaJ.get(i),i+1));
+                jComboBox1.setSelectedItem(null);
+            }  
+        jComboBox1.addItemListener(this);
+        jComboBox2.addItemListener(this);
 
 
         this.frameInicial=frameInicial;
@@ -104,6 +111,11 @@ public class AdionarAula extends javax.swing.JPanel {
         });
 
         jButton1.setText("Adicionar Aula");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -169,6 +181,20 @@ public class AdionarAula extends javax.swing.JPanel {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+          if(jComboBox1.getItemCount()>0 && jComboBox1.getSelectedIndex()!=-1&&jComboBox2.getItemCount()>0 && jComboBox2.getSelectedIndex()!=-1){
+            List<Horario> listaH=dados.getHorarios();
+            List<Aula> listaJ=dados.getAulas();
+            listaH.get(jComboBox1.getSelectedIndex()).adicionarAula(listaJ.get(jComboBox2.getSelectedIndex()));
+            
+            frameInicial.setVisible(true);
+            frame.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Nao foi selecionado nenhum horário", "Alerta", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
