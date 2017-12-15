@@ -113,8 +113,7 @@ public class Dados implements Serializable{
         
         resultado=(prof.getNome()
                       +" "+prof.getIdade()
-                      +" "+prof.getGrauAcadémico() + " - "
-                     );
+                      +" "+prof.getGrauAcadémico());
                 
         return resultado;
     }
@@ -130,7 +129,7 @@ public class Dados implements Serializable{
         
         resultado=(turma.getNumero()
                       +" "+turma.getDisciplina()
-                      +" "+turma.getTipoTurma() + " - "
+                      +" "+turma.getTipoTurma()
                       );
                 
         return resultado;

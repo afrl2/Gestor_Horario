@@ -279,7 +279,7 @@ public class CriarAula extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(prof, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,7 +300,7 @@ public class CriarAula extends javax.swing.JPanel {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(497, 497, 497)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                     .addGap(34, 34, 34)))
         );
 
@@ -333,6 +333,62 @@ public class CriarAula extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(dsemjComboBox1.getSelectedItem()!=null && prof.getSelectedItem()!=null && sala.getSelectedItem()!=null && turma.getSelectedItem()!=null && !jTextField2.getText().isEmpty() && !jTextField3.getText().isEmpty()){
+            DiaSemana Descolhido=null;
+            Professor Pescolhido=null;
+            Salas Sescolhido=null;
+            Turma Tescolhido=null;
+            
+            for(DiaSemana d : DiaSemana.values()){
+                if(d.toString()==dsemjComboBox1.getSelectedItem().toString()){
+                    Descolhido=d;
+                }
+            }   
+            Pescolhido=dados.getProfessores().get(prof.getSelectedIndex());
+            Sescolhido=dados.getSalas().get(sala.getSelectedIndex());
+            Tescolhido=dados.getTurmas().get(turma.getSelectedIndex());
+            
+            String inicial[]= jTextField2.getText().split(":", 2);
+            String finale[]= jTextField3.getText().split(":", 2);
+            
+            try{
+                try{
+                    hi=Integer.parseInt(inicial[0]);
+                    mi=Integer.parseInt(inicial[1]);
+                    hf=Integer.parseInt(finale[0]);
+                    mf=Integer.parseInt(finale[1]);
+                }catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "Horas em formato hh:mm - (Inteiros apenas)", "Horas", JOptionPane.ERROR_MESSAGE);
+                    frameInicial.setVisible(true);
+                    frame.dispose();
+                }
+                Aula a=new Aula(dados,hi,mi,hf,mf,Pescolhido,Sescolhido,Tescolhido,Descolhido);
+            }catch(IllegalArgumentException e){
+                JOptionPane.showMessageDialog(null, "Mestrado nao apresenta opcao de 3 ano", "Mestrado", JOptionPane.ERROR_MESSAGE);
+            }
+            frameInicial.setVisible(true);
+            frame.dispose();
+        }else{
+            if(dsemjComboBox1.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + dsemjComboBox1.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(prof.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + prof.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(sala.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + sala.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(turma.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + turma.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(jTextField2.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jTextField2.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            if(jTextField3.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Formatacao ERRADA no campo " + jTextField3.getName(), "Alerta", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
