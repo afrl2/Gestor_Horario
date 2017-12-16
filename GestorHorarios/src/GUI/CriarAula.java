@@ -183,6 +183,11 @@ public class CriarAula extends javax.swing.JPanel {
         prof.setName("Professor"); // NOI18N
 
         jTextField2.setName("Hora Inicial"); // NOI18N
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jTextField3.setName("Hora Inicial"); // NOI18N
 
@@ -431,6 +436,10 @@ public class CriarAula extends javax.swing.JPanel {
         frame_1.setVisible(true);
         frame.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
