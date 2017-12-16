@@ -4,6 +4,7 @@ import Dados.Aula;
 import Dados.Dados;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Horario implements Comparable<Horario>, Serializable{
@@ -101,7 +102,7 @@ public class Horario implements Comparable<Horario>, Serializable{
             aulas.add(aula);
             return true;
         } else {
-            throw new RuntimeException("ja existe uma aula dentro do intervalo "
+            throw new IllegalArgumentException("ja existe uma aula dentro do intervalo "
                     + "horario pretendido"); 
         }
         
@@ -122,6 +123,24 @@ public class Horario implements Comparable<Horario>, Serializable{
         
         return dados.getHorarios().remove(this);
         
+    }
+    
+    public List sort(Aula a[]){
+        List<Aula> aulas=new ArrayList<Aula>();
+        
+        for (int i = 0; i < a.length; i++) {
+            aulas.add(a[i]);
+            
+        }
+        
+        aulas.sort(new Comparator(){
+            @Override
+            public int compare(Object o1, Object o2) {
+                return (((Aula)o1).getHoraInicial().getHora()*60+((Aula)o1).getHoraInicial().getMinuto())-(((Aula)o2).getHoraInicial().getHora()*60+((Aula)o2).getHoraInicial().getMinuto());
+            }
+            
+        });
+        return aulas;
     }
     
     public Aula[][] SortHorario(){

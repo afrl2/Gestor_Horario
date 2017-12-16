@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 /**
@@ -24,32 +25,63 @@ public class MostrarHorario extends javax.swing.JPanel{
     javax.swing.JFrame frame;
     Dados dados;
     int selection;
+    Aula a[][];
+    int aux;
     /**
      * Creates new form GerirHorario
      */
-    public MostrarHorario(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados) {
+    public MostrarHorario(javax.swing.JFrame frameInicial,javax.swing.JFrame frame,Dados dados,int selection) {
         initComponents();
-                List<Horario> listaH=dados.getHorarios();
-        for(int i=0;i<listaH.size();i++){
-            jComboBox1.addItem(dados.getHorariosNome(listaH.get(i),i+1));
-            jComboBox1.setSelectedItem(null);
-        }  
+        List<Horario> listaH=dados.getHorarios();
+         
+        this.selection=selection;
+       
         
-        Aula a[][]=listaH.get(0).SortHorario();
+        aux=0;
+        a=listaH.get(selection).SortHorario();
         
-        for(int i=0;i<a.length;i++){
-            for(int j=0;j<a[i].length;j++){
-                if(i<10){
-                    Aula abc=a[i][j];
-                    if(abc!=null)
-                        jTable1.setValueAt(a[i][j].getTurma().getDisciplina(),j, i);
-                }
-                    
-                    
-            }
-            
+        List<Aula> b=null;
+        List<Aula> c=null;
+        List<Aula> d=null;
+        List<Aula> e=null;
+        List<Aula> f=null;
+        List<Aula> g=null;
+        List<Aula> h=null;
+        
+        if(a[0][0]!=null){
+            b=listaH.get(selection).sort(a[0]);
+            func(b,0);
         }
-        
+        if(a[1][0]!=null){
+            JOptionPane.showMessageDialog(null, "Nao existem horarios para remover", "Remover Horario", JOptionPane.ERROR_MESSAGE);
+            c=listaH.get(selection).sort(a[1]);
+            func(c,0);
+        }
+        if(a[2][0]!=null){
+            //JOptionPane.showMessageDialog(null, "Nao existem horarios para remover", "Remover Horario", JOptionPane.ERROR_MESSAGE);
+            d=listaH.get(selection).sort(a[2]);
+            func(d,0);
+        }
+        if(a[3][0]!=null){
+            //JOptionPane.showMessageDialog(null, "Nao existem horarios para remover", "Remover Horario", JOptionPane.ERROR_MESSAGE);
+            e=listaH.get(selection).sort(a[3]);
+            func(e,0);
+        }
+        if(a[4][0]!=null){
+            //JOptionPane.showMessageDialog(null, "Nao existem horarios para remover", "Remover Horario", JOptionPane.ERROR_MESSAGE);
+            f=listaH.get(selection).sort(a[4]);
+            func(f,0);
+        }
+        if(a[5][0]!=null){
+            //JOptionPane.showMessageDialog(null, "Nao existem horarios para remover", "Remover Horario", JOptionPane.ERROR_MESSAGE);
+            g=listaH.get(selection).sort(a[5]);
+            func(g,0);
+        }
+        if(a[6][0]!=null){
+            //JOptionPane.showMessageDialog(null, "Nao existem horarios para remover", "Remover Horario", JOptionPane.ERROR_MESSAGE);
+            h=listaH.get(selection).sort(a[6]);
+            func(h,0);
+        }
 
         this.frameInicial=frameInicial;
         this.frame=frame;
@@ -58,7 +90,20 @@ public class MostrarHorario extends javax.swing.JPanel{
         centreWindow(frame);
     }
     
-   
+   void func(List<Aula> x,int j){
+       if(!x.isEmpty()){
+           for (int i = 0; i < x.size(); i++) {
+                if(a[j].length!=0){ 
+                    aux=4+i*4;
+                    jTable1.setValueAt(x.get(i).getTurma().getDisciplina(),aux-4, j);
+                    jTable1.setValueAt(x.get(i).getTurma().getTipoTurma()+ "-" +x.get(i).getTurma().getNumero(),aux-3, j);
+                    jTable1.setValueAt(x.get(i).getHoraInicial().getHora()+":"+x.get(i).getHoraInicial().getMinuto()+" - "+x.get(i).getHoraFinal().getHora()+":"+x.get(i).getHoraFinal().getMinuto(),aux-2, j);
+                }
+            
+            }   
+       }
+       
+   }
     
     
     public static void centreWindow(Window frame) {
@@ -79,8 +124,6 @@ public class MostrarHorario extends javax.swing.JPanel{
 
         jComboBox2 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -101,16 +144,6 @@ public class MostrarHorario extends javax.swing.JPanel{
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Horário:   ");
-
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -240,6 +273,15 @@ public class MostrarHorario extends javax.swing.JPanel{
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Segunda");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Terça");
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Quarta");
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Quinta");
+            jTable1.getColumnModel().getColumn(4).setHeaderValue("Sexta");
+            jTable1.getColumnModel().getColumn(5).setHeaderValue("Sabado");
+            jTable1.getColumnModel().getColumn(6).setHeaderValue("Domingo");
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -248,22 +290,12 @@ public class MostrarHorario extends javax.swing.JPanel{
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(558, 1005, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jTextField1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 77, Short.MAX_VALUE)))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -272,12 +304,8 @@ public class MostrarHorario extends javax.swing.JPanel{
                 .addContainerGap()
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -286,10 +314,6 @@ public class MostrarHorario extends javax.swing.JPanel{
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -304,11 +328,11 @@ public class MostrarHorario extends javax.swing.JPanel{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+   
 }

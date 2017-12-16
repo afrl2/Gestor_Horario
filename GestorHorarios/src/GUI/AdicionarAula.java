@@ -192,7 +192,7 @@ public class AdicionarAula extends javax.swing.JPanel {
             try{
             listaH.get(jComboBox1.getSelectedIndex()).adicionarAula(listaJ.get(jComboBox2.getSelectedIndex()));
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "e.getMessage()", "Alerta", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Alerta", JOptionPane.ERROR_MESSAGE);
        
             }
             frameInicial.setVisible(true);

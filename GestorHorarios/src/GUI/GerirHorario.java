@@ -37,7 +37,7 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
             jComboBox1.setSelectedItem(null);
         }  
         jComboBox1.addItemListener(this);
-        
+        jButton1.setVisible(false);
         this.frameInicial=frameInicial;
         this.frame=frame;
         this.dados=dados;
@@ -48,10 +48,11 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
     public void itemStateChanged(ItemEvent e) {
         if ((e.getStateChange() == ItemEvent.SELECTED)) {
             List<Horario> listaH=dados.getHorarios();
-            int selection = jComboBox1.getSelectedIndex();
+            selection = jComboBox1.getSelectedIndex();
             jTextField3.setText(listaH.get(selection).getCurso().toString());
             jTextField4.setText(listaH.get(selection).getSemestre().toString());
             jTextField2.setText(listaH.get(selection).getAno().toString());
+            jButton1.setVisible(true);
         }
     }
     
@@ -84,6 +85,7 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(141, 141, 157));
@@ -126,7 +128,7 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
 
         jTextField2.setFocusable(false);
 
-        jButton1.setText("Apagar Horário");
+        jButton1.setText("Mostrar Horario");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -147,6 +149,13 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Apagar Horário");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -174,17 +183,18 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
                     .addComponent(jTextField4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
+                        .addGap(0, 36, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextField1)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -193,6 +203,10 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
                 .addContainerGap()
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3446, 3446, 3446))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -213,11 +227,9 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
                         .addGap(121, 121, 121)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(3446, 3446, 3446))
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3446, 3446, 3446))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -237,14 +249,14 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(jComboBox1.getItemCount()>0 && jComboBox1.getSelectedIndex()!=-1){
-            List<Horario> listaH=dados.getHorarios();
-            listaH.remove(jComboBox1.getSelectedIndex());
-            frameInicial.setVisible(true);
-            frame.dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "Nao existem horarios para remover", "Remover Horario", JOptionPane.ERROR_MESSAGE);
-        }
+
+        JFrame frame_1=new JFrame();
+        JPanel p = new MostrarHorario(frame,frame_1,dados,selection);
+        frame_1.add(p);
+        frame_1.setSize(1000, 700);
+        frame_1.setVisible(true);
+        
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -257,11 +269,24 @@ public class GerirHorario extends javax.swing.JPanel implements ItemListener {
         frame_1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        if(jComboBox1.getItemCount()>0 && jComboBox1.getSelectedIndex()!=-1){
+            List<Horario> listaH=dados.getHorarios();
+            listaH.remove(jComboBox1.getSelectedIndex());
+            frameInicial.setVisible(true);
+            frame.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Nao existem horarios para remover", "Remover Horario", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
