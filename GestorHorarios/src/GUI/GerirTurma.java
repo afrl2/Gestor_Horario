@@ -33,7 +33,7 @@ public class GerirTurma extends javax.swing.JPanel implements ItemListener {
         
         List<Turma> listaH=dados.getTurmas();
         for(int i=0;i<listaH.size();i++){
-            jComboBox1.addItem(dados.getTurmasNome(listaH.get(i),i+1));
+            jComboBox1.addItem(dados.getTurmasNome(listaH.get(i)));
             jComboBox1.setSelectedItem(null);
         }  
         jComboBox1.addItemListener(this);

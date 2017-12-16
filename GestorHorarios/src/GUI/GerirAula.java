@@ -55,7 +55,7 @@ public class GerirAula extends javax.swing.JPanel implements ItemListener {
             jTextField2.setText(listaH.get(selection).getHoraFinalString());
             jTextField7.setText(dados.getProfessoresNome(listaH.get(selection).getProfessor()));
             jTextField6.setText(dados.getSalasNome(listaH.get(selection).getSala()));
-            jTextField5.setText(dados.getTurmasNome(listaH.get(selection).getTurma(),selection));    
+            jTextField5.setText(dados.getTurmasNome(listaH.get(selection).getTurma()));    
         }
     }
     

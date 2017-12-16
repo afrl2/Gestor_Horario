@@ -37,7 +37,7 @@ public class ModificarTurma extends javax.swing.JPanel implements ItemListener{
         
         List<Turma> listaT=dados.getTurmas();
         for(int i=0;i<listaT.size();i++){
-            jComboBox1.addItem(dados.getTurmasNome(listaT.get(i),i+1));
+            jComboBox1.addItem(dados.getTurmasNome(listaT.get(i)));
             jComboBox1.setSelectedItem(null);
         }  
             for(TipoTurma c : TipoTurma.values()){
