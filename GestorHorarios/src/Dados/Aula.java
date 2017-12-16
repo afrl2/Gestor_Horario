@@ -75,7 +75,7 @@ public class Aula implements Comparable<Aula>,Serializable{
     }
 
     public void setHoraInicial(Hora hora_inicial) {
-        if (hora_inicial.getHora()<25 && hora_inicial.getHora()>0 
+        if (hora_inicial.getHora()<24 && hora_inicial.getHora()>=0 
                 && hora_inicial.getMinuto()<=59 && hora_inicial.getMinuto()>=0 
                 && hora_inicial.getHora()*60+hora_inicial.getMinuto()
                     <this.hora_final.getHora()*60+hora_final.getMinuto()){
@@ -93,7 +93,7 @@ public class Aula implements Comparable<Aula>,Serializable{
     }
 
     public void setHoraFinal(Hora hora_final) {
-        if (hora_final.getHora()<25 && hora_final.getHora()>0 
+        if (hora_final.getHora()<24 && hora_final.getHora()>=0 
                 && hora_final.getMinuto()<=59 && hora_final.getMinuto()>=0 
                 && this.getHoraInicial().getHora()*60+this.getHoraInicial().getMinuto()
                     <hora_final.getHora()*60+hora_inicial.getMinuto()){
