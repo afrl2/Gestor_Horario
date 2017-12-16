@@ -49,7 +49,7 @@ public class GerirAula extends javax.swing.JPanel implements ItemListener {
     public void itemStateChanged(ItemEvent e) {
         if ((e.getStateChange() == ItemEvent.SELECTED)) {
             List<Aula> listaH=dados.getAulas();
-            int selection = jComboBox1.getSelectedIndex();
+            selection = jComboBox1.getSelectedIndex();
             jTextField3.setText(listaH.get(selection).getDia().toString());
             jTextField4.setText(listaH.get(selection).getHoraInicialString());
             jTextField2.setText(listaH.get(selection).getHoraFinalString());
